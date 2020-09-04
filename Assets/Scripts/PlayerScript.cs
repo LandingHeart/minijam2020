@@ -27,6 +27,7 @@ public class PlayerScript : MonoBehaviour
     }
     private void ColorSwitch() {
         timer += Time.deltaTime;
+        timer = timer % 20;
         if (timer < 10)
         {
             sr.color = Color.red;
