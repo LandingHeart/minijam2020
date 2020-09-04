@@ -12,6 +12,7 @@ public class PlayerScript : MonoBehaviour
     public myColors currColors;
     public SpriteRenderer sr;
     public float timer;
+  
     void Start()
     {
         currColors = myColors.DEFAULT;
@@ -60,14 +61,13 @@ public class PlayerScript : MonoBehaviour
             {
                 TakeDamage(10f);
             }
-
         }
         if (collision.gameObject.CompareTag("GreenBullet"))
         {
             if (currColors == myColors.BLUE)
             {
                 TakeDamage(10f);
-
+                Debug.Log("take green bullet damge: " + 10f);
             }
             if (currColors == myColors.RED)
             {
@@ -86,14 +86,11 @@ public class PlayerScript : MonoBehaviour
                 TakeDamage(10f);
             }
         }
-
     }
     private void TakeDamage(float damage)
     {
         currHp -= damage;
         StartCoroutine(resetColor());
-
-
         if (currHp <= 0)
         {
             //play animation
@@ -104,5 +101,6 @@ public class PlayerScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
     }
+    
    
 }

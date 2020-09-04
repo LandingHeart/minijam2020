@@ -16,13 +16,20 @@ public class PlayerAim : MonoBehaviour
     private SpriteRenderer sr;
     private int BulletCount;
     PlayerScript.myColors bulletColor;
-   
+    public float bulletDamge = 10f;
+    private Color red;
+    private Color blue;
+    private Color green;
+    
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         playerScript = GetComponent<PlayerScript>();
         bulletColor = playerScript.currColors;
+        red = Color.red;
+        blue = Color.blue;
+        green = Color.green;
 
     }
     // Update is called once per frame
@@ -56,6 +63,25 @@ public class PlayerAim : MonoBehaviour
         GameObject myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
         SpriteRenderer bulletColor = myBullet.GetComponent<SpriteRenderer>();
         bulletColor.color = playerScript.sr.color;
+        if (bulletColor.color.Equals(red))
+        {
+            Debug.Log("red bullet. damage " + bulletDamge);
+            myBullet.tag = "MyRedBullet";
+
+            //set damage;
+        }
+        if (bulletColor.color.Equals(green) )
+        {
+            bulletDamge = 12;
+            myBullet.tag = "MyGreenBullet";
+            Debug.Log("green bullet" + bulletDamge);
+        }
+        if (bulletColor.color.Equals(blue))
+        {
+            bulletDamge = 13;
+            myBullet.tag = "MyBlueBullet";
+            Debug.Log("blue bullet" + bulletDamge);
+        }
         Rigidbody2D rb = myBullet.GetComponent<Rigidbody2D>();
         //add force to bullet
         rb.AddForce(firePoint.up * speed, ForceMode2D.Impulse);
