@@ -1,10 +1,11 @@
 ﻿<Properties StartupConfiguration="{4EA5FC29-82D4-8FF8-7838-0DCF345EC7C2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerAim.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerScript.cs">
     <Files>
-      <File FileName="Assets/Scripts/PlayerScript.cs" Line="83" Column="14" />
+      <File FileName="Assets/Scripts/PlayerScript.cs" Line="26" Column="23" />
       <File FileName="Assets/Scripts/PlayerAim.cs" Line="26" Column="6" />
       <File FileName="Assets/Scripts/Pickup.cs" Line="13" Column="39" />
       <File FileName="Assets/Scripts/EnemyScript.cs" Line="14" Column="6" />
+      <File FileName="Assets/Scripts/PlayerMovement.cs" Line="51" Column="36" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

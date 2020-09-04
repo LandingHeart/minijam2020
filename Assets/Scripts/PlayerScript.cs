@@ -27,7 +27,7 @@ public class PlayerScript : MonoBehaviour
     }
     private void ColorSwitch() {
         timer += Time.deltaTime;
-        if (timer > 5 && timer < 10)
+        if (timer < 10)
         {
             sr.color = Color.red;
             currColors = myColors.RED;
@@ -42,11 +42,7 @@ public class PlayerScript : MonoBehaviour
             sr.color = Color.green;
             currColors = myColors.GREEN;
         }
-        else
-        {
-            sr.color = Color.white;
-            currColors = myColors.DEFAULT;
-        }
+      
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

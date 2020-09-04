@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private LayerMask layermask;
     private bool resetJumpNeeded = false;
-
     //private PlayerAnimation _playerAnim;
 
     [SerializeField]
@@ -43,18 +42,21 @@ public class PlayerMovement : MonoBehaviour
         float move = Input.GetAxisRaw("Horizontal");
         //CheckFaceDirection(move);
 
-        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+        if (_grounded == true && Input.GetKeyDown(KeyCode.Space))
         {
             //rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+            _grounded = false;
             resetJumpNeeded = true;
+
             StartCoroutine(ResetJumpNeededRoutine());
         }
         rb.velocity = new Vector2(move * speed, rb.velocity.y);
     }
     IEnumerator ResetJumpNeededRoutine()
     {
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.1f);
         resetJumpNeeded = false;
     }
     //private void CheckFaceDirection(float move)
@@ -85,6 +87,8 @@ public class PlayerMovement : MonoBehaviour
             rayColor = Color.red;
             if (resetJumpNeeded == false)
             {
+                _grounded = true;
+
                 return true;
             }
         }
