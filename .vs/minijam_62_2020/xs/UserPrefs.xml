@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{4EA5FC29-82D4-8FF8-7838-0DCF345EC7C2}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerAim.cs">
+    <Files>
+      <File FileName="Assets/Scripts/PlayerScript.cs" Line="16" Column="41" />
+      <File FileName="Assets/Scripts/PlayerMovement.cs" Line="25" Column="42" />
+      <File FileName="Assets/Scripts/PlayerAim.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="d18a8c85-8033-4210-b7cb-3b3005bd4a78" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
