@@ -28,7 +28,6 @@ public class PlayerAim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("current color is: " + playerScript.currColors);
         bulletColor = playerScript.currColors;
         // obtain mouse pos to shoot at mouse
         Vector3 mousepos = Input.mousePosition;
