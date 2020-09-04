@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _grounded = true;
     private CircleCollider2D circollider;
     public static float damage = 10f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,9 +41,7 @@ public class PlayerMovement : MonoBehaviour
     public void Movement()
     {
         float move = Input.GetAxisRaw("Horizontal");
-        CheckFaceDirection(move);
-
-        rb.velocity = new Vector2(move * speed, rb.velocity.y);
+        //CheckFaceDirection(move);
 
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
         {
@@ -51,23 +50,24 @@ public class PlayerMovement : MonoBehaviour
             resetJumpNeeded = true;
             StartCoroutine(ResetJumpNeededRoutine());
         }
+        rb.velocity = new Vector2(move * speed, rb.velocity.y);
     }
     IEnumerator ResetJumpNeededRoutine()
     {
         yield return new WaitForSeconds(0.01f);
         resetJumpNeeded = false;
     }
-    private void CheckFaceDirection(float move)
-    {
-        if (move > 0 && faceRight)
-        {
-            Flip();
-        }
-        else if (move < 0 && !faceRight)
-        {
-            Flip();
-        }
-    }
+    //private void CheckFaceDirection(float move)
+    //{
+    //    if (move > 0 && faceRight)
+    //    {
+    //        Flip();
+    //    }
+    //    else if (move < 0 && !faceRight)
+    //    {
+    //        Flip();
+    //    }
+    //}
     private void Flip()
     {
         faceRight = !faceRight;
@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool IsGrounded()
     {
-        float height = .1f;
+        float height = 1f;
         RaycastHit2D raycastHit = Physics2D.Raycast(circollider.bounds.center, Vector2.down, circollider.bounds.extents.y + height, layermask);
         Color rayColor;
         if (raycastHit.collider != null)

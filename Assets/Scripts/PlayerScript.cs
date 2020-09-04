@@ -8,9 +8,9 @@ public class PlayerScript : MonoBehaviour
     public static float damage = 10f;
     private float currHp;
     public float maxHp = 500;
-    enum myColors { RED, GREEN, BLUE, DEFAULT};
-    private myColors currColors;
-    private SpriteRenderer sr;
+    public enum myColors { RED, GREEN, BLUE, DEFAULT};
+    public myColors currColors;
+    public SpriteRenderer sr;
     public float timer;
     void Start()
     {
@@ -18,14 +18,15 @@ public class PlayerScript : MonoBehaviour
         currHp = maxHp;
         sr = GetComponentInChildren<SpriteRenderer>();
         timer = 0.0f;
-
     }
-
     // Update is called once per frame
     void Update()
     {
+        ColorSwitch();
+    }
+    private void ColorSwitch() {
         timer += Time.deltaTime;
-        if(timer > 5 && timer < 10)
+        if (timer > 5 && timer < 10)
         {
             sr.color = Color.red;
             currColors = myColors.RED;
@@ -39,7 +40,8 @@ public class PlayerScript : MonoBehaviour
         {
             sr.color = Color.green;
             currColors = myColors.GREEN;
-        }else
+        }
+        else
         {
             sr.color = Color.white;
             currColors = myColors.DEFAULT;
