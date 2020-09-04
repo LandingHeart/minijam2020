@@ -7,32 +7,88 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     public static float damage = 10f;
     private float currHp;
-    public float maxHp = 1000;
-    public SpriteRenderer sr;
+    public float maxHp = 500;
+    enum myColors { RED, GREEN, BLUE, DEFAULT};
+    private myColors currColors;
+    private SpriteRenderer sr;
+    public float timer;
     void Start()
     {
+        currColors = myColors.DEFAULT;
         currHp = maxHp;
+        sr = GetComponentInChildren<SpriteRenderer>();
+        timer = 0.0f;
 
-        //sr.color = new Color(0, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        timer += Time.deltaTime;
+        if(timer > 5 && timer < 10)
+        {
+            sr.color = Color.red;
+            currColors = myColors.RED;
+        }
+        else if (timer > 10 && timer < 15)
+        {
+            sr.color = Color.blue;
+            currColors = myColors.BLUE;
+        }
+        else if (timer > 15 && timer < 20)
+        {
+            sr.color = Color.green;
+            currColors = myColors.GREEN;
+        }else
+        {
+            sr.color = Color.white;
+            currColors = myColors.DEFAULT;
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("EnemyBullet"))
+        if (collision.gameObject.CompareTag("RedBullet"))
         {
-            //TakeDamage(EnemyScript.damage);
-            Debug.Log("Damge taken");
+          if(currColors == myColors.BLUE)
+            {
+                TakeDamage(10f);
+
+            }
+          if(currColors == myColors.GREEN)
+            {
+                TakeDamage(10f);
+            }
+
         }
+        if (collision.gameObject.CompareTag("GreenBullet"))
+        {
+            if (currColors == myColors.BLUE)
+            {
+                TakeDamage(10f);
+
+            }
+            if (currColors == myColors.RED)
+            {
+                TakeDamage(10f);
+            }
+        }
+        if (collision.gameObject.CompareTag("BlueBullet"))
+        {
+            if (currColors == myColors.RED)
+            {
+                TakeDamage(10f);
+
+            }
+            if (currColors == myColors.GREEN)
+            {
+                TakeDamage(10f);
+            }
+        }
+
     }
     private void TakeDamage(float damage)
     {
         currHp -= damage;
-        sr.color = Color.white;
         StartCoroutine(resetColor());
 
 
@@ -45,7 +101,6 @@ public class PlayerScript : MonoBehaviour
     IEnumerator resetColor()
     {
         yield return new WaitForSeconds(0.1f);
-        sr.color = new Color(245, 84, 0);
-
     }
+   
 }
