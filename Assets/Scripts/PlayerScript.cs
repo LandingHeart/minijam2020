@@ -52,38 +52,43 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("RedBullet"))
         {
-          if(currColors == myColors.BLUE)
+          if(currColors.Equals(myColors.BLUE))
             {
                 TakeDamage(10f);
+                Debug.Log(currColors + " color, and take red bullet damge: " + 10f);
 
             }
-          if(currColors == myColors.GREEN)
+          if(currColors.Equals(myColors.GREEN))
             {
                 TakeDamage(10f);
+                Debug.Log(currColors + " color, and take green bullet damge: " + 10f);
             }
         }
         if (collision.gameObject.CompareTag("GreenBullet"))
         {
-            if (currColors == myColors.BLUE)
+            if (currColors.Equals(myColors.BLUE))
             {
                 TakeDamage(10f);
-                Debug.Log("take green bullet damge: " + 10f);
+                Debug.Log(currColors + " color, and take green bullet damge: " + 10f);
             }
-            if (currColors == myColors.RED)
+            if (currColors.Equals(myColors.RED))
             {
                 TakeDamage(10f);
+                Debug.Log(currColors + " color, and take green bullet damge: " + 10f);
             }
         }
         if (collision.gameObject.CompareTag("BlueBullet"))
         {
-            if (currColors == myColors.RED)
+            if (currColors.Equals(myColors.RED))
             {
                 TakeDamage(10f);
+                Debug.Log(currColors + " color, and take blue bullet damge: " + 10f);
 
             }
-            if (currColors == myColors.GREEN)
+            if (currColors.Equals(myColors.GREEN))
             {
                 TakeDamage(10f);
+                Debug.Log(currColors + " color, and take blue bullet damge: " + 10f);
             }
         }
     }
