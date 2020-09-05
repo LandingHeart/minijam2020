@@ -435,6 +435,11 @@ MonoBehaviour:
   - {fileID: 7030544967048811695}
   - {fileID: 7030544965961609984}
   - {fileID: 7030544966775693169}
+  numProjectiles: 10
+  boss2_red_bullet: {fileID: 3638221759495544955, guid: 39afcc8cdb3354401b07acc836e87e5e, type: 3}
+  boss2_blue_bullet: {fileID: 3638221759495544955, guid: c55cab9c89440194d851816661345c77, type: 3}
+  boss2_green_bullet: {fileID: 3638221759495544955, guid: 65098786f42ec7a4cbfbe46c94753044, type: 3}
+  launchPoint: {fileID: 7030544966454041009}
 --- !u!1 &7030544966474904860
 GameObject:
   m_ObjectHideFlags: 0
