@@ -24,11 +24,11 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
         CheckDistAndTimeToFire();
-        Move();
+      //  Move();
     }
     public void Move()
     {
-        rb.
+        
     }
     public void CheckDistAndTimeToFire() {
         float dist = Vector2.Distance(playerTransform.position, transform.position);
