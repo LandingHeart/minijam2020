@@ -13,9 +13,11 @@ public class EnemyScript : MonoBehaviour
     public float bulletSpeed = 10f;
     private float fireRate = 1f;
     private float nextFire;
+    private Rigidbody2D rb;
     void Start()
     {
         currHp = maxHp;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -24,11 +26,9 @@ public class EnemyScript : MonoBehaviour
         CheckDistAndTimeToFire();
         Move();
     }
-    public void OnAnimatorMove()
+    public void Move()
     {
-        ){
-
-        }
+        rb.
     }
     public void CheckDistAndTimeToFire() {
         float dist = Vector2.Distance(playerTransform.position, transform.position);

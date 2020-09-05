@@ -8,6 +8,7 @@ public class BlueBulletScript : MonoBehaviour
     public float speed = 10f;
     public Transform playerTransform;
     public float timer = 0;
+
     void Start()
     {
         
@@ -21,6 +22,7 @@ public class BlueBulletScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+      
         transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, speed * Time.deltaTime);
     }
 }
