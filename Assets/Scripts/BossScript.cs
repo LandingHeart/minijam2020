@@ -7,28 +7,28 @@ public class BossScript : MonoBehaviour
     // Start is called before the first frame update
     public Transform player;
     public float speed = 10f;
-    public float maxHp;
+    public float maxHp = 500f;
     public GameObject leftTeeth;
     public GameObject rightTeeth;
     public Transform[] teethPointLeft;// 2 teeth
     public Transform[] teethPointRight;// 2 teeth
-
+    public SpriteRenderer sr;
     private float currHp;
     public float movementCD = 10f;
     public float fireRate = 0.2f;
     public float nextFire;
     private bool cd = false;
-    public LineRenderer line;
-    public Transform laserHit;
+    
     public GameObject laser;
     private bool laserCd = false;
+
+    public GameObject greenTeeth;
 
     void Start()
     {
         //transform.position = new Vector2(player.position.x, transform.position.y);
-        line = GetComponentInChildren<LineRenderer>();
-        line.enabled = false;
-        line.useWorldSpace = true;
+        currHp = maxHp;
+        sr = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -48,6 +48,13 @@ public class BossScript : MonoBehaviour
                 SentTeeth();
                 StartCoroutine(TeethColdDown());
             }
+        }
+        if(dist <= 2f)
+        {
+            greenTeeth.SetActive(true);
+        }else
+        {
+            greenTeeth.SetActive(false);
         }
 
         if (laserCd == false)
@@ -101,7 +108,23 @@ public class BossScript : MonoBehaviour
         //    Instantiate(rightTeeth, teethPointRight[i].position, teethPointRight[i].rotation);
         //}
 
+        
 
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("MyRedBullet"))
+        {
+
+        }
+        if (collision.gameObject.CompareTag("MyBlueBullet"))
+        {
+
+        }
+        if (collision.gameObject.CompareTag("MyGreenBullet"))
+        {
+
+        }
     }
 }

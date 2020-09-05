@@ -18,12 +18,22 @@ public class LaserScript : MonoBehaviour
         //moveDir = (playerTransform.transform.position - transform.position).normalized * bulletSpeed;
         //rb.velocity = new Vector2(moveDir.x, moveDir.y);
         moveDir = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
-        //transform.rotation = Quaternion.LookRotation(moveDir);
+
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, moveDir, bulletSpeed * Time.deltaTime);
+
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
+        Destroy(gameObject, 0.1f);
+
     }
 }
