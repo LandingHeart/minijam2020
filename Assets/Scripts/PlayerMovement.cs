@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
         // _playerSpriteFlip.flipX = !_playerSpriteFlip.flipX;
         transform.Rotate(0f, 180f, 0f);
     }
-
+    // chekc if player is on the ground or not on the ground
     public bool IsGrounded()
     {
         float height = 1f;

@@ -34,10 +34,13 @@ public class PlayerAim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         bulletColor = playerScript.currColors;
         // obtain mouse pos to shoot at mouse
         Vector3 mousepos = Input.mousePosition;
+        //get mouse position
         mousepos = Camera.main.ScreenToWorldPoint(mousepos);
+        // calculate mous position
         Vector2 dir = new Vector2(mousepos.x - transform.position.x, mousepos.y - transform.position.y);
         //set direction, up.
         transform.up = dir;

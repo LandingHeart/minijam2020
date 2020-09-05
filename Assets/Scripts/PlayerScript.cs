@@ -14,9 +14,10 @@ public class PlayerScript : MonoBehaviour
     public float timer;
   
     void Start()
-    {
+    {   //enum set curr color to default
         currColors = myColors.DEFAULT;
         currHp = maxHp;
+        //get player sprite in children
         sr = GetComponentInChildren<SpriteRenderer>();
         timer = 0.0f;
     }
@@ -67,6 +68,7 @@ public class PlayerScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //check collision by comparing the tags of object 
         if (collision.gameObject.CompareTag("RedBullet"))
         {
           if(currColors.Equals(myColors.BLUE))
@@ -109,20 +111,15 @@ public class PlayerScript : MonoBehaviour
             }
         }
     }
+
     private void TakeDamage(float damage)
     {
         currHp -= damage;
-        StartCoroutine(resetColor());
+      
         if (currHp <= 0)
         {
             //play animation
             Destroy(gameObject, 3f);
         }
-    }
-    IEnumerator resetColor()
-    {
-        yield return new WaitForSeconds(0.1f);
-    }
-    
-   
+    }   
 }
