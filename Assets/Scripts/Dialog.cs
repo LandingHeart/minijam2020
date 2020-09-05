@@ -10,21 +10,21 @@ public class Dialog : MonoBehaviour
     public string[] sentences;
     private int index;
     public float typingSpeed;
-   // public GameObject continueButton;
-    //public Animator textDisplayAnim;
+    public GameObject continueButton;
+    public Animator textDisplayAnim= null;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(Type());
     }
- //   void Update()
-   // {
-     //   if (textDisplay.text == sentences[index])
-       // {
-         //   continueButton.SetActive(true);
-        //}
-    //}
+    void Update()
+    {
+        if (textDisplay.text == sentences[index])
+        {
+            continueButton.SetActive(true);
+        }
+    }
 
     IEnumerator Type()
     {
@@ -36,9 +36,8 @@ public class Dialog : MonoBehaviour
     }
 
 
-/*    public void NextSentence()
+    public void NextSentence()
     {
-
         textDisplayAnim.SetTrigger("Change");
         continueButton.SetActive(false);
         if (index < sentences.Length - 1)
@@ -53,5 +52,5 @@ public class Dialog : MonoBehaviour
             continueButton.SetActive(false);
         }
     }
-    */
-    }
+
+}
