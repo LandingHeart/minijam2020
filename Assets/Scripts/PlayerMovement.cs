@@ -30,11 +30,12 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Debug.Log("Grounded: "+IsGrounded());
+        Movement();
     }
 
     void FixedUpdate()
     {
-        Movement();
+       
     }
 
     public void Movement()

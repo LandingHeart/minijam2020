@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlueBulletScript : MonoBehaviour
+public class GreenBulletScript : MonoBehaviour
 {
     // Start is called before the first frame update
     // Start is called before the first frame update
@@ -29,6 +29,8 @@ public class BlueBulletScript : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+
+            //这段是 跟踪弹；
             //transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, speed * Time.deltaTime);
         }
     }

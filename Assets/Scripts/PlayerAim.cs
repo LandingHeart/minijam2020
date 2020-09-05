@@ -21,7 +21,6 @@ public class PlayerAim : MonoBehaviour
     private Color blue;
     private Color green;
     
-
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();

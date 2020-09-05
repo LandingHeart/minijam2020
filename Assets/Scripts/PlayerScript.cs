@@ -26,24 +26,44 @@ public class PlayerScript : MonoBehaviour
         ColorSwitch();
     }
     private void ColorSwitch() {
-        timer += Time.deltaTime;
-        timer = timer % 20;
-        if (timer < 10)
+        //change with time
+        //timer += Time.deltaTime;
+        //timer = timer % 20;
+        //if (timer < 10)
+        //{
+        //    sr.color = Color.red;
+        //    currColors = myColors.RED;
+        //}
+        //else if (timer > 10 && timer < 15)
+        //{
+        //    sr.color = Color.blue;
+        //    currColors = myColors.BLUE;
+        //}
+        //else if (timer > 15 && timer < 20)
+        //{
+        //    sr.color = Color.green;
+        //    currColors = myColors.GREEN;
+        //}
+
+        // change with keys
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             sr.color = Color.red;
             currColors = myColors.RED;
         }
-        else if (timer > 10 && timer < 15)
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             sr.color = Color.blue;
             currColors = myColors.BLUE;
         }
-        else if (timer > 15 && timer < 20)
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             sr.color = Color.green;
             currColors = myColors.GREEN;
         }
-      
+
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
