@@ -8,6 +8,11 @@ public class EnemyScript : MonoBehaviour
     public float currHp;
     public float maxHp = 100f;
     PlayerAim playerAim;
+    public Transform playerTransform;
+    public GameObject bullet;
+    public float bulletSpeed = 10f;
+    private float fireRate = 1f;
+    private float nextFire;
     void Start()
     {
         currHp = maxHp;
@@ -16,7 +21,30 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CheckDistAndTimeToFire();
+        Move();
+    }
+    public void OnAnimatorMove()
+    {
+        ){
+
+        }
+    }
+    public void CheckDistAndTimeToFire() {
+        float dist = Vector2.Distance(playerTransform.position, transform.position);
+
+        if (Time.time > nextFire)
+        {
+            if (dist < 10f)
+            {
+                Debug.Log("dist 10");
+                nextFire = Time.time + fireRate;
+                fireBullet();
+            }
+        }
+    }
+    public void fireBullet() {
+        Instantiate(bullet, transform.position, transform.rotation);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
