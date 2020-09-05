@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -6071418595391114743}
   - component: {fileID: 2677680986882622824}
   m_Layer: 0
-  m_Name: BlueBulleet
+  m_Name: BlueBullet
   m_TagString: BlueBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: efea900143ff14d87a6ef5dffed2d56b, type: 3}
   m_Color: {r: 0.05724907, g: 0, b: 1, a: 1}
   m_FlipX: 0
@@ -149,7 +149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  playerTransform: {fileID: 5771031822291861559, guid: 18d8aeef34cb7444580e7376c13b17c4, type: 3}
   timer: 0
 --- !u!1 &1214871384071332101
 GameObject:
