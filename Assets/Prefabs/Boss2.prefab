@@ -416,7 +416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9390c49112a43054889775a655f0f705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 5771031822291861559, guid: 18d8aeef34cb7444580e7376c13b17c4, type: 3}
   speed: 10
   attackSpeed: 100
   startWaitTime: 1

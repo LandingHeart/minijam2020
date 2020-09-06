@@ -14,12 +14,15 @@ public class PlayerAim : MonoBehaviour
     private Transform firePoint;
     private PlayerScript playerScript;
     private SpriteRenderer sr;
+
+        
     private int BulletCount;
     PlayerScript.myColors bulletColor;
     public float bulletDamge = 10f;
     private Color red;
     private Color blue;
     private Color green;
+    private Color white;
     
     void Start()
     {
@@ -29,6 +32,7 @@ public class PlayerAim : MonoBehaviour
         red = Color.red;
         blue = Color.blue;
         green = Color.green;
+        white = Color.white;
 
     }
     // Update is called once per frame
@@ -57,7 +61,6 @@ public class PlayerAim : MonoBehaviour
         {
 
         } 
-       
     }
     public void fireProjectile()
     {
@@ -69,7 +72,6 @@ public class PlayerAim : MonoBehaviour
         {
             Debug.Log("red bullet. damage " + bulletDamge);
             myBullet.tag = "MyRedBullet";
-
             //set damage;
         }
         if (bulletColor.color.Equals(green) )
@@ -84,9 +86,23 @@ public class PlayerAim : MonoBehaviour
             myBullet.tag = "MyBlueBullet";
             Debug.Log("blue bullet" + bulletDamge);
         }
+        if (bulletColor.color.Equals(white))
+        {
+            bulletDamge = 5f;
+            myBullet.tag = "MyWhiteBullet";
+            Debug.Log("blue bullet" + bulletDamge);
+        }
         Rigidbody2D rb = myBullet.GetComponent<Rigidbody2D>();
         //add force to bullet
         rb.AddForce(firePoint.up * speed, ForceMode2D.Impulse);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Boss1"))
+        {
+            Destroy(gameObject);
+        }
+        Destroy(gameObject, 5f);
     }
 
 

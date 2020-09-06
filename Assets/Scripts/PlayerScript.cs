@@ -12,7 +12,7 @@ public class PlayerScript : MonoBehaviour
     public myColors currColors;
     public SpriteRenderer sr;
     public float timer;
-  
+    public GameObject mySprite;
     void Start()
     {   //enum set curr color to default
         currColors = myColors.DEFAULT;
@@ -110,16 +110,37 @@ public class PlayerScript : MonoBehaviour
                 Debug.Log(currColors + " color, and take blue bullet damge: " + 10f);
             }
         }
+
+        if (collision.gameObject.CompareTag("Laser"))
+        {
+            Debug.Log("collided with laser");
+
+            TakeDamage(10f);
+        }
+        if (collision.gameObject.CompareTag("Teeth")) {
+            Debug.Log("collided with teeth");
+            TakeDamage(20f);
+        }
+
     }
 
     private void TakeDamage(float damage)
     {
         currHp -= damage;
-      
+        mySprite.SetActive(true);
+        StartCoroutine(resetColor());
+
         if (currHp <= 0)
         {
             //play animation
             Destroy(gameObject, 3f);
         }
-    }   
+    }
+
+    IEnumerator resetColor()
+    {
+        yield return new WaitForSeconds(0.1f);
+        mySprite.SetActive(false);
+    }
+
 }

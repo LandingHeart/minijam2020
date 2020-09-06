@@ -6,14 +6,16 @@ public class BossScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform player;
-    public float speed = 10f;
+    private float speed = 10f;
     public float maxHp = 500f;
+    private float currHp;
+
     public GameObject leftTeeth;
     public GameObject rightTeeth;
     public Transform[] teethPointLeft;// 2 teeth
     public Transform[] teethPointRight;// 2 teeth
     public SpriteRenderer sr;
-    private float currHp;
+    
     public float movementCD = 10f;
     public float fireRate = 0.2f;
     public float nextFire;
@@ -23,7 +25,9 @@ public class BossScript : MonoBehaviour
     private bool laserCd = false;
 
     public GameObject greenTeeth;
+    float dist = 0;
 
+    public float cdTime = 1f;
     void Start()
     {
         //transform.position = new Vector2(player.position.x, transform.position.y);
@@ -34,25 +38,45 @@ public class BossScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Attack();
+        Move();
+        if(currHp <= 300)
+        {
+            sr.color = new Color(255, 0, 0);
+            speed = 15f;
+            LaserScript.bulletSpeed = 60f;
+
+        }
+        //transform.position = Vector2.MoveTowards(transform.position,
+        //           new Vector2(player.position.x, transform.position.y), speed * Time.deltaTime);
+    }
+    private void Attack() {
         movementCD -= Time.time;
-        float dist = player.position.x - transform.position.x;
+      
+        if (player != null)
+        {
+            dist = player.position.x - transform.position.x;
+        }
+
         if (dist < 0)
         {
             dist = dist * -1;
-           
+
         }
-        if(dist <= 0f)
+        if (dist <= 0f)
         {
-            if(cd == false)
+            if (cd == false)
             {
                 SentTeeth();
                 StartCoroutine(TeethColdDown());
             }
         }
-        if(dist <= 2f)
+        if (dist <= 2f)
         {
             greenTeeth.SetActive(true);
-        }else
+        }
+        else
         {
             greenTeeth.SetActive(false);
         }
@@ -62,15 +86,9 @@ public class BossScript : MonoBehaviour
             LaserAttack();
             StartCoroutine(MyLaserCd());
         }
-
-        Debug.Log("dist " + dist);
-        Move();
-        
-        //transform.position = Vector2.MoveTowards(transform.position,
-        //           new Vector2(player.position.x, transform.position.y), speed * Time.deltaTime);
     }
     IEnumerator MyLaserCd() {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(cdTime);
         laserCd = false;
     }
     private void LaserAttack()
@@ -86,8 +104,12 @@ public class BossScript : MonoBehaviour
     }
     private void Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position,
-          new Vector2(player.position.x, transform.position.y), speed * Time.deltaTime);
+        if(player != null)
+        {
+            transform.position = Vector2.MoveTowards(transform.position,
+  new Vector2(player.position.x, transform.position.y), speed * Time.deltaTime);
+        }
+
     }
     IEnumerator TeethColdDown()
     {
@@ -116,15 +138,40 @@ public class BossScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MyRedBullet"))
         {
-
+            
+            TakeDamage(10f);
+            Debug.Log("take damge red");
         }
         if (collision.gameObject.CompareTag("MyBlueBullet"))
         {
-
+          
+            TakeDamage(10f);
+            Debug.Log("take damge blue");
         }
         if (collision.gameObject.CompareTag("MyGreenBullet"))
         {
-
+            TakeDamage(10f);
+           
+            Debug.Log("take damge g");
         }
+        if (collision.gameObject.CompareTag("MyWhiteBullet"))
+        {
+           
+            TakeDamage(10f);
+            Debug.Log("take damge w");
+        }
+    }
+    private void TakeDamage(float damage) {
+        currHp -= damage;
+        sr.color = new Color(255, 0, 0);
+        StartCoroutine(resetColor());
+        if(currHp <= 0)
+        {   
+            Destroy(gameObject, 0.1f);
+        }
+    }
+    IEnumerator resetColor() {
+        yield return new WaitForSeconds(0.1f);
+        sr.color = new Color(255, 255, 255);
     }
 }

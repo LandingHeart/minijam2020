@@ -8,7 +8,7 @@ public class LaserScript : MonoBehaviour
     private Rigidbody2D rb;
    
     private Vector3 moveDir;
-    public float bulletSpeed = 30f;
+    public static float bulletSpeed = 40f;
     private GameObject player;
     void Start()
     {
@@ -33,7 +33,10 @@ public class LaserScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Destroy(gameObject, 0.1f);
+        if (collision.gameObject.CompareTag("ground"))
+        {
+            Destroy(gameObject);
+        }
 
     }
 }

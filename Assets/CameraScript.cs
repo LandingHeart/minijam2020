@@ -9,11 +9,16 @@ public class CameraScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player").transform;
+        if(player != null) {
+            player = GameObject.Find("Player").transform;
+        }
+
+
     }
 
     void Update()
     {
-        transform.position = new Vector3(player.position.x + offset.x, player.position.y + offset.y, offset.z); // Camera follows the player with specified offset position
+        if(player != null)   
+            transform.position = new Vector3(player.position.x + offset.x, player.position.y + offset.y, offset.z); // Camera follows the player with specified offset position
     }
 }
