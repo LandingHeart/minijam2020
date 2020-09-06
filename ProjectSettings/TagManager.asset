@@ -16,6 +16,10 @@ TagManager:
   - MyWhiteBullet
   - Teeth
   - Laser
+  - background1
+  - background0
+  - background2
+  - background3
   layers:
   - Default
   - TransparentFX
