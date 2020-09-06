@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -12,7 +12,7 @@ public class Dialog : MonoBehaviour
     public float typingSpeed;
     public GameObject continueButton;
     private AudioSource source;
-    public Animator textDisplayAnim= null;
+    public Animator textDisplayAnim;
 
     void Start()
     {
