@@ -7,7 +7,7 @@ public class BossScript : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] public Transform player;
     private float speed = 10f;
-    public float maxHp = 50f;
+    public float maxHp = 500f;
     private float currHp;
 
     public GameObject leftTeeth;
@@ -31,6 +31,9 @@ public class BossScript : MonoBehaviour
     public GameObject bground;
     public HealthBar health;
 
+    [SerializeField] public Transform spawnPoint;
+    private bool hasSpawned = false;
+
     void Start()
     {
         //transform.position = new Vector2(player.position.x, transform.position.y);
@@ -42,17 +45,24 @@ public class BossScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!hasSpawned){
+            transform.position = Vector2.MoveTowards(transform.position, spawnPoint.position, 10f * Time.deltaTime);
+            if(Vector2.Distance(transform.position,spawnPoint.position) < 0.2f){ // reached
+                hasSpawned = true;
+            }
+        }else{
+            Attack();
+            Move();
+            if(currHp <= 300)
+            {
+                sr.color = new Color(255, 0, 0);
+                speed = 15f;
+                LaserScript.bulletSpeed = 60f;
+                cdTime = 0.5f;
 
-        Attack();
-        Move();
-        if(currHp <= 300)
-        {
-            sr.color = new Color(255, 0, 0);
-            speed = 15f;
-            LaserScript.bulletSpeed = 60f;
-            cdTime = 0.5f;
-
+            }
         }
+
         // Debug.Log("Curr hp " + currHp);
         //transform.position = Vector2.MoveTowards(transform.position,
         //           new Vector2(player.position.x, transform.position.y), speed * Time.deltaTime);
@@ -94,7 +104,8 @@ public class BossScript : MonoBehaviour
         }
     }
     IEnumerator MyLaserCd() {
-        yield return new WaitForSeconds(cdTime);
+        // yield return new WaitForSeconds(cdTime);
+        yield return new WaitForSeconds(10f);
         laserCd = false;
     }
     private void LaserAttack()
@@ -119,7 +130,7 @@ public class BossScript : MonoBehaviour
     }
     IEnumerator TeethColdDown()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         cd = false;
     }
     private void SentTeeth()

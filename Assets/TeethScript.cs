@@ -7,7 +7,7 @@ public class TeethScript : MonoBehaviour
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject, 10f);
+        Destroy(gameObject, 5f);
         if (collision.gameObject.CompareTag("Player")) {
             Destroy(gameObject);
         }

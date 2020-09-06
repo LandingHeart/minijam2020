@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currHp: 0
-  maxHp: 50
+  maxHp: 20
   playerAim: {fileID: 6910725938129153185, guid: 69a1ec128a1329441b0f0116ba9d6275, type: 3}
   playerTransform: {fileID: 6910725938129153191, guid: 69a1ec128a1329441b0f0116ba9d6275, type: 3}
   redBullet: {fileID: 7708850868590496627, guid: c02934aa8da194c729e057077439374f, type: 3}

@@ -20,6 +20,7 @@ TagManager:
   - background0
   - background2
   - background3
+  - Boss2
   layers:
   - Default
   - TransparentFX

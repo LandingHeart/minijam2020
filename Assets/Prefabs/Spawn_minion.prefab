@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551905dccd2394b0aa60b9b572c6903b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 0
+  spawnRate: 5
   spawnTime: 0
   minion: {fileID: 5789808027174416829, guid: ad6e53d3c01014df8bba930836db169e, type: 3}
   leftSpawnPoint: {fileID: 1163577697331948046}

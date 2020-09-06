@@ -15,6 +15,13 @@ public class PlayerScript : MonoBehaviour
     public float timer;
     public GameObject mySprite;
     public HealthBar health;
+
+    [SerializeField] public ColorBar redBar;
+    [SerializeField] public ColorBar greenBar;
+    [SerializeField] public ColorBar blueBar;
+    public int red_bullets = 0;
+    public int green_bullets = 0;
+    public int blue_bullets = 0;
     void Start()
     {   //enum set curr color to default
         currColors = myColors.DEFAULT;
@@ -120,13 +127,13 @@ public class PlayerScript : MonoBehaviour
             // Debug.Log("collided with laser" + "Health now:" + currHp);
         }
         if (collision.gameObject.CompareTag("Teeth")) {
-            Debug.Log("collided with teeth");
-            TakeDamage(20f);
+            // Debug.Log("collided with teeth");
+            TakeDamage(5f);
         }
 
     }
 
-    private void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         currHp -= damage;
         mySprite.SetActive(true);
@@ -140,10 +147,50 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    public void TakeDamage(float damage, myColors color)
+    {
+        Debug.Log("player taking damage " + color + ", current self color " + currColors);
+        if(color == currColors){
+           // absorb bullet
+           Absorb(color);
+        }else{
+            currHp -= damage;
+            mySprite.SetActive(true);
+            StartCoroutine(resetColor());
+            health.setHealth(currHp);
+        }
+        
+        if (currHp <= 0)
+        {
+            //play animation
+            Debug.Log("player die");
+            Destroy(gameObject);
+        }
+    }
+
     IEnumerator resetColor()
     {
         yield return new WaitForSeconds(0.1f);
         mySprite.SetActive(false);
+    }
+
+    void Absorb(myColors color){
+        switch(color){
+            case myColors.RED:
+                red_bullets += 1;
+                redBar.setColorBullets(red_bullets);
+                break;
+            case myColors.GREEN:
+                green_bullets += 1;
+                greenBar.setColorBullets(green_bullets);
+                break;
+            case myColors.BLUE:
+                blue_bullets += 1;
+                blueBar.setColorBullets(blue_bullets);
+                break;
+            default:
+                break;
+        }
     }
 
 }

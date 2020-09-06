@@ -9,7 +9,7 @@ public class PlayerAim : MonoBehaviour
  
     [SerializeField]
     private GameObject bullet;
-    public float speed = 50f;
+    public float speed = 100f;
     [SerializeField] private Transform firePoint;
     [SerializeField] private Transform firePoint1;
     [SerializeField] private Transform firePoint2;
@@ -134,7 +134,7 @@ public class PlayerAim : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Boss1"))
         {
-            Destroy(gameObject);
+            // Destroy(gameObject);
         }
 
     }

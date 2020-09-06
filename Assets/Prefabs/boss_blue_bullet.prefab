@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 3638221759495544956}
   - component: {fileID: 2923153863175199840}
   - component: {fileID: -7470692549180928061}
+  - component: {fileID: 3536641628979507707}
+  - component: {fileID: 1364405035126389674}
   m_Layer: 0
-  m_Name: boss2_green_bullet
+  m_Name: boss_blue_bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: efea900143ff14d87a6ef5dffed2d56b, type: 3}
-  m_Color: {r: 0.019607844, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.058823533, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -105,6 +107,35 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3536641628979507707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3638221759495544955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1b38feab321f940817170fade5b16d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletColor: 2
+--- !u!58 &1364405035126389674
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3638221759495544955}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.019931793}
+  serializedVersion: 2
+  m_Radius: 2.3126602
 --- !u!1 &7854173470540531702
 GameObject:
   m_ObjectHideFlags: 0
