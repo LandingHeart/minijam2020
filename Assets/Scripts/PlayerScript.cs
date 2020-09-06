@@ -8,7 +8,7 @@ public class PlayerScript : MonoBehaviour
     public static float damage = 10f;
     private float currHp;
     public float maxHp = 100;
-    public enum myColors { RED, GREEN, BLUE, DEFAULT};
+    public enum myColors {RED, GREEN, BLUE, DEFAULT};
     public myColors currColors;
     public SpriteRenderer sr;
     public float timer;
@@ -114,7 +114,7 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Laser"))
         {
             TakeDamage(10f);
-            Debug.Log("collided with laser" + "Health now:" + currHp);
+            // Debug.Log("collided with laser" + "Health now:" + currHp);
         }
         if (collision.gameObject.CompareTag("Teeth")) {
             Debug.Log("collided with teeth");

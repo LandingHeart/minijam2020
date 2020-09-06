@@ -49,6 +49,7 @@ public class BossScript : MonoBehaviour
             LaserScript.bulletSpeed = 60f;
 
         }
+        // Debug.Log("Curr hp " + currHp);
         //transform.position = Vector2.MoveTowards(transform.position,
         //           new Vector2(player.position.x, transform.position.y), speed * Time.deltaTime);
     }

@@ -40,6 +40,7 @@ public class LaserScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Destroy(gameObject, 1f);
 
     }
 }
