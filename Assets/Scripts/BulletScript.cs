@@ -18,6 +18,7 @@ public class BulletScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {  
+        Debug.Log("Hit something");
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Boss1") || collision.gameObject.CompareTag("Boss2"))
         {
             Destroy(gameObject, 0.1f);

@@ -120,14 +120,29 @@ public class PlayerScript : MonoBehaviour
             // Debug.Log("collided with laser" + "Health now:" + currHp);
         }
         if (collision.gameObject.CompareTag("Teeth")) {
-            Debug.Log("collided with teeth");
-            TakeDamage(20f);
+            // Debug.Log("collided with teeth");
+            TakeDamage(5f);
         }
 
     }
 
-    private void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
+        currHp -= damage;
+        mySprite.SetActive(true);
+        StartCoroutine(resetColor());
+        health.setHealth(currHp);
+        if (currHp <= 0)
+        {
+            //play animation
+            Debug.Log("player die");
+            Destroy(gameObject);
+        }
+    }
+
+    public void TakeDamage(float damage, myColors color)
+    {
+        Debug.Log("player taking damage " + color + ", current self color " + currColors);
         currHp -= damage;
         mySprite.SetActive(true);
         StartCoroutine(resetColor());

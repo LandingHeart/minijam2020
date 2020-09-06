@@ -134,7 +134,7 @@ public class PlayerAim : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Boss1"))
         {
-            Destroy(gameObject);
+            // Destroy(gameObject);
         }
 
     }

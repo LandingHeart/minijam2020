@@ -101,7 +101,7 @@ public class EnemyScript : MonoBehaviour
             {
                 if (dist < random)
                 {
-                    Debug.Log("dist 10");
+                    // Debug.Log("dist 10");
                     nextFire = Time.time + fireRate;
                     fireBullet();
                 }

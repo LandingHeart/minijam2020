@@ -104,7 +104,8 @@ public class BossScript : MonoBehaviour
         }
     }
     IEnumerator MyLaserCd() {
-        yield return new WaitForSeconds(cdTime);
+        // yield return new WaitForSeconds(cdTime);
+        yield return new WaitForSeconds(10f);
         laserCd = false;
     }
     private void LaserAttack()
@@ -129,7 +130,7 @@ public class BossScript : MonoBehaviour
     }
     IEnumerator TeethColdDown()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         cd = false;
     }
     private void SentTeeth()
