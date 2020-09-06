@@ -13,10 +13,12 @@ public class PlayerScript : MonoBehaviour
     public SpriteRenderer sr;
     public float timer;
     public GameObject mySprite;
+    public HealthBar health;
     void Start()
     {   //enum set curr color to default
         currColors = myColors.DEFAULT;
         currHp = maxHp;
+        health.SetMaxHealth(maxHp);
         //get player sprite in children
         sr = GetComponentInChildren<SpriteRenderer>();
         timer = 0.0f;
@@ -128,7 +130,7 @@ public class PlayerScript : MonoBehaviour
         currHp -= damage;
         mySprite.SetActive(true);
         StartCoroutine(resetColor());
-
+        health.setHealth(currHp);
         if (currHp <= 0)
         {
             //play animation
