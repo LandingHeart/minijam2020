@@ -142,6 +142,7 @@ public class BossScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Debug.Log("Getting Hit");
         if (collision.gameObject.CompareTag("MyRedBullet"))
         {
             
@@ -167,11 +168,12 @@ public class BossScript : MonoBehaviour
             Debug.Log("take damge w");
         }
     }
-    private void TakeDamage(float damage) {
+    public void TakeDamage(float damage) {
         currHp -= damage;
         sr.color = new Color(255, 0, 0);
         StartCoroutine(resetColor());
         health.setHealth(currHp);
+        Debug.Log(currHp);
         if(currHp <= 0)
         {   
             Destroy(gameObject, 0.1f);
