@@ -143,10 +143,16 @@ public class PlayerScript : MonoBehaviour
     public void TakeDamage(float damage, myColors color)
     {
         Debug.Log("player taking damage " + color + ", current self color " + currColors);
-        currHp -= damage;
-        mySprite.SetActive(true);
-        StartCoroutine(resetColor());
-        health.setHealth(currHp);
+        if(color == currColors){
+           // absorb bullet
+           Absorb(color);
+        }else{
+            currHp -= damage;
+            mySprite.SetActive(true);
+            StartCoroutine(resetColor());
+            health.setHealth(currHp);
+        }
+        
         if (currHp <= 0)
         {
             //play animation
@@ -159,6 +165,20 @@ public class PlayerScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         mySprite.SetActive(false);
+    }
+
+    void Absorb(myColors color){
+        switch(color){
+            case myColors.RED:
+                Debug.Log("REDRED");
+                break;
+            case myColors.GREEN:
+                break;
+            case myColors.BLUE:
+                break;
+            default:
+                break;
+        }
     }
 
 }
