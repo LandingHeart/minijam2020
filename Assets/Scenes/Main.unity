@@ -1930,7 +1930,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1217383471}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64fb89374be844c839cfbf3e3029518a, type: 3}
+  m_Script: {fileID: 11500000, guid: f9d69fa463755e44e98d00ae6ab00585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1217383474}
@@ -1978,9 +1978,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1000
+  m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 1000
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2032,7 +2032,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1224761461}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64fb89374be844c839cfbf3e3029518a, type: 3}
+  m_Script: {fileID: 11500000, guid: f9d69fa463755e44e98d00ae6ab00585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1224761464}
@@ -2080,9 +2080,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1000
+  m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 1000
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2237,8 +2237,20 @@ PrefabInstance:
       objectReference: {fileID: 1357016113}
     - target: {fileID: 6910725938129153190, guid: 69a1ec128a1329441b0f0116ba9d6275, type: 3}
       propertyPath: maxHp
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 6910725938129153190, guid: 69a1ec128a1329441b0f0116ba9d6275, type: 3}
+      propertyPath: greenBar
+      value: 
+      objectReference: {fileID: 1224761463}
+    - target: {fileID: 6910725938129153190, guid: 69a1ec128a1329441b0f0116ba9d6275, type: 3}
+      propertyPath: redBar
+      value: 
+      objectReference: {fileID: 2128644877}
+    - target: {fileID: 6910725938129153190, guid: 69a1ec128a1329441b0f0116ba9d6275, type: 3}
+      propertyPath: blueBar
+      value: 
+      objectReference: {fileID: 1217383473}
     - target: {fileID: 6910725938129153191, guid: 69a1ec128a1329441b0f0116ba9d6275, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2866,7 +2878,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2128644875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64fb89374be844c839cfbf3e3029518a, type: 3}
+  m_Script: {fileID: 11500000, guid: f9d69fa463755e44e98d00ae6ab00585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 2128644878}
@@ -2914,9 +2926,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1000
+  m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 1000
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3018,6 +3030,14 @@ PrefabInstance:
     - target: {fileID: 53316841568513017, guid: 430c8d5cb95b04bd8954e3903fcacfcd, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 53316841568513018, guid: 430c8d5cb95b04bd8954e3903fcacfcd, type: 3}
+      propertyPath: m_MaxValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 53316841568513018, guid: 430c8d5cb95b04bd8954e3903fcacfcd, type: 3}
+      propertyPath: m_Value
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 53316842321545698, guid: 430c8d5cb95b04bd8954e3903fcacfcd, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3224,6 +3244,14 @@ PrefabInstance:
     - target: {fileID: 5554743170771721110, guid: 1e4792cbfb618b04fbf95e96822b4951, type: 3}
       propertyPath: m_Name
       value: BossHealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5554743170771721195, guid: 1e4792cbfb618b04fbf95e96822b4951, type: 3}
+      propertyPath: m_MaxValue
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5554743170771721195, guid: 1e4792cbfb618b04fbf95e96822b4951, type: 3}
+      propertyPath: m_Value
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e4792cbfb618b04fbf95e96822b4951, type: 3}
