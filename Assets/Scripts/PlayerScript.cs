@@ -7,7 +7,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     public static float damage = 10f;
     private float currHp;
-    public float maxHp = 500;
+    public float maxHp = 100;
     public enum myColors { RED, GREEN, BLUE, DEFAULT};
     public myColors currColors;
     public SpriteRenderer sr;
@@ -113,9 +113,8 @@ public class PlayerScript : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Laser"))
         {
-            Debug.Log("collided with laser");
-
             TakeDamage(10f);
+            Debug.Log("collided with laser" + "Health now:" + currHp);
         }
         if (collision.gameObject.CompareTag("Teeth")) {
             Debug.Log("collided with teeth");
@@ -133,7 +132,8 @@ public class PlayerScript : MonoBehaviour
         if (currHp <= 0)
         {
             //play animation
-            Destroy(gameObject, 3f);
+            Debug.Log("player die");
+            Destroy(gameObject);
         }
     }
 

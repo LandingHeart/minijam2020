@@ -102,7 +102,7 @@ public class PlayerAim : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Destroy(gameObject, 5f);
+
     }
 
 

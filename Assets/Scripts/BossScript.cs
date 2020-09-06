@@ -7,7 +7,7 @@ public class BossScript : MonoBehaviour
     // Start is called before the first frame update
     public Transform player;
     private float speed = 10f;
-    public float maxHp = 500f;
+    public float maxHp = 50f;
     private float currHp;
 
     public GameObject leftTeeth;

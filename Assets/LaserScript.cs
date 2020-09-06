@@ -8,7 +8,7 @@ public class LaserScript : MonoBehaviour
     private Rigidbody2D rb;
    
     private Vector3 moveDir;
-    public static float bulletSpeed = 40f;
+    public static float bulletSpeed = 60f;
     private GameObject player;
     void Start()
     {
@@ -17,7 +17,10 @@ public class LaserScript : MonoBehaviour
 
         //moveDir = (playerTransform.transform.position - transform.position).normalized * bulletSpeed;
         //rb.velocity = new Vector2(moveDir.x, moveDir.y);
-        moveDir = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+        if (player)
+        {
+            moveDir = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+        }
 
     }
 
