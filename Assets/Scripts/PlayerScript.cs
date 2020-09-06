@@ -6,6 +6,7 @@ public class PlayerScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public static float damage = 10f;
+    [SerializeField]
     private float currHp;
     public float maxHp = 100;
     public enum myColors {RED, GREEN, BLUE, DEFAULT};

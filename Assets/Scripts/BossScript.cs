@@ -29,11 +29,14 @@ public class BossScript : MonoBehaviour
 
     public float cdTime = 1f;
     public GameObject bground;
+    public HealthBar health;
+
     void Start()
     {
         //transform.position = new Vector2(player.position.x, transform.position.y);
         currHp = maxHp;
         sr = GetComponentInChildren<SpriteRenderer>();
+        health.SetMaxHealth(currHp);
     }
 
     // Update is called once per frame
@@ -47,6 +50,7 @@ public class BossScript : MonoBehaviour
             sr.color = new Color(255, 0, 0);
             speed = 15f;
             LaserScript.bulletSpeed = 60f;
+            cdTime = 0.5f;
 
         }
         // Debug.Log("Curr hp " + currHp);
@@ -167,11 +171,12 @@ public class BossScript : MonoBehaviour
         currHp -= damage;
         sr.color = new Color(255, 0, 0);
         StartCoroutine(resetColor());
+        health.setHealth(currHp);
         if(currHp <= 0)
         {   
             Destroy(gameObject, 0.1f);
-            bground = GameObject.FindWithTag("background0");
-            bground.SetActive(false);
+            //bground = GameObject.FindWithTag("background0");
+            //bground.SetActive(false);
         }
     }
     IEnumerator resetColor() {

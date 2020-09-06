@@ -267,7 +267,7 @@ MonoBehaviour:
   sr: {fileID: 6910725937340360944}
   timer: 0
   mySprite: {fileID: 6910725938904266411}
-  health: {fileID: 0}
+  health: {fileID: 53316841568513019, guid: 430c8d5cb95b04bd8954e3903fcacfcd, type: 3}
 --- !u!114 &6910725938129153186
 MonoBehaviour:
   m_ObjectHideFlags: 0

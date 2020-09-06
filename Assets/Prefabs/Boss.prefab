@@ -66,6 +66,7 @@ MonoBehaviour:
   greenTeeth: {fileID: 1642641473776429417}
   cdTime: 1
   bground: {fileID: 0}
+  health: {fileID: 53316841568513019, guid: 15c8456aca40649acb2cc9ba627ad65a, type: 3}
 --- !u!58 &1642641473260683016
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -304,8 +305,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642641473776429417}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.88, y: -2.65, z: 0}
-  m_LocalScale: {x: 0.609369, y: 0.609369, z: 0.609369}
+  m_LocalPosition: {x: -0.31, y: -0.38, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 0.609369}
   m_Children: []
   m_Father: {fileID: 1642641473260683019}
   m_RootOrder: 1
@@ -350,8 +351,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: 21300000, guid: 9284bbe62597d454086a900f467efaab, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 287589b81c4ea8649aa651688ba259fe, type: 3}
+  m_Color: {r: 0.12193539, g: 0.3207547, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
