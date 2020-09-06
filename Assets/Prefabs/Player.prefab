@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 6910725938129153186}
   - component: {fileID: 6910725938129153185}
   m_Layer: 0
-  m_Name: Player 1
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,11 +262,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f58e4a9c4eedf4a8aba7c2e2b7dad846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10000
+  maxHp: 100
   currColors: 3
-  sr: {fileID: 0}
+  sr: {fileID: 6910725937340360944}
   timer: 0
   mySprite: {fileID: 6910725938904266411}
+  health: {fileID: 0}
 --- !u!114 &6910725938129153186
 MonoBehaviour:
   m_ObjectHideFlags: 0
