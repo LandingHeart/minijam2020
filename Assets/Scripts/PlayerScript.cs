@@ -15,6 +15,13 @@ public class PlayerScript : MonoBehaviour
     public float timer;
     public GameObject mySprite;
     public HealthBar health;
+
+    [SerializeField] public ColorBar redBar;
+    [SerializeField] public ColorBar greenBar;
+    [SerializeField] public ColorBar blueBar;
+    public int red_bullets = 0;
+    public int green_bullets = 0;
+    public int blue_bullets = 0;
     void Start()
     {   //enum set curr color to default
         currColors = myColors.DEFAULT;
@@ -170,11 +177,16 @@ public class PlayerScript : MonoBehaviour
     void Absorb(myColors color){
         switch(color){
             case myColors.RED:
-                Debug.Log("REDRED");
+                red_bullets += 1;
+                redBar.setColorBullets(red_bullets);
                 break;
             case myColors.GREEN:
+                green_bullets += 1;
+                greenBar.setColorBullets(green_bullets);
                 break;
             case myColors.BLUE:
+                blue_bullets += 1;
+                blueBar.setColorBullets(blue_bullets);
                 break;
             default:
                 break;

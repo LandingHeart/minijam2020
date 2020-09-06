@@ -13,12 +13,11 @@ public class BackgroundScript : MonoBehaviour
         boss1 = GameObject.Find("Boss1");
         boss2 = GameObject.Find("Boss2");
 
-        Debug.Log(boss1.activeSelf);
+        if(boss1)
+            boss1.SetActive(false);
+        if(boss2)
+            boss2.SetActive(false);
 
-        boss1.SetActive(false);
-        boss2.SetActive(false);
-
-        Debug.Log(boss1.activeSelf);
         StartCoroutine(spawnBoss1());
 
     }

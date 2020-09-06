@@ -24,7 +24,7 @@ public class BossBulletScript : MonoBehaviour
             // Debug.Log("Hit player " + bulletColor);
             PlayerScript playerScript = collision.gameObject.GetComponent<PlayerScript>();
             playerScript.TakeDamage(10f, bulletColor);
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject);
         }
     }
 }
