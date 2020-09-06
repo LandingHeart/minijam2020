@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Boss2Script : MonoBehaviour
 {
+    public float maxHp = 500f;
+    private float currHp;
+    public HealthBar health;
+    public SpriteRenderer sr;
+
     // Start is called before the first frame update
     public Transform player;
     public float speed = 20;
@@ -42,7 +47,8 @@ public class Boss2Script : MonoBehaviour
     private float nextFire;
 
     public GameObject launchPoint;
-
+    [SerializeField] public Transform spawnPoint;
+    private bool hasSpawned = false;
 
     void Start()
     {
@@ -54,6 +60,10 @@ public class Boss2Script : MonoBehaviour
         radius = 5f;
         bulletSpeed = 15f;
         waves = Random.Range(1, 3);
+
+        sr = GetComponentInChildren<SpriteRenderer>();
+        currHp = maxHp;
+        health.SetMaxHealth(currHp);
     }
 
     // Update is called once per frame
@@ -94,6 +104,8 @@ public class Boss2Script : MonoBehaviour
             }
             isPatternStarted = true;
         }
+    
+        
     }
 
     void idleMoving(){
@@ -178,10 +190,49 @@ public class Boss2Script : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("MyRedBullet"))
         {
-            // Destroy(gameObject);
+            
+            TakeDamage(10f);
+            Debug.Log("take damge red");
+        }
+        if (collision.gameObject.CompareTag("MyBlueBullet"))
+        {
+          
+            TakeDamage(10f);
+            Debug.Log("take damge blue");
+        }
+        if (collision.gameObject.CompareTag("MyGreenBullet"))
+        {
+            TakeDamage(10f);
+           
+            Debug.Log("take damge g");
+        }
+        if (collision.gameObject.CompareTag("MyWhiteBullet"))
+        {
+           
+            TakeDamage(10f);
+            Debug.Log("take damge w");
         }
 
+    }
+
+    public void TakeDamage(float damage) {
+        currHp -= damage;
+        sr.color = new Color(255, 0, 0);
+        StartCoroutine(resetColor());
+        health.setHealth(currHp);
+        Debug.Log(currHp);
+        if(currHp <= 0)
+        {   
+            Destroy(transform.parent.gameObject, 0.1f);
+            //bground = GameObject.FindWithTag("background0");
+            //bground.SetActive(false);
+        }
+    }
+
+    IEnumerator resetColor() {
+        yield return new WaitForSeconds(0.1f);
+        sr.color = new Color(255, 255, 255);
     }
 }

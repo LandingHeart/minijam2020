@@ -45,25 +45,29 @@ public class EnemyScript : MonoBehaviour
         CheckDistAndTimeToFire();
         CheckColorMix();
         Move();
-        
-        float dist = Vector2.Distance(transform.position, playerTransform.transform.position);
-        if( dist < 15f)
-        {
-            rb.velocity = Vector3.zero;
+        if(playerTransform){
+            float dist = Vector2.Distance(transform.position, playerTransform.transform.position);
+            if( dist < 15f)
+            {
+                rb.velocity = Vector3.zero;
+            }
         }
+        
     
       //  Move();
     }
    
     public void Move()
     {
-        if(playerTransform.transform.position.x > transform.position.x)
-        {
-            rb.velocity = transform.right * speed;
-        }else
-        {   //move left
-            rb.velocity = -transform.right * speed;
+        if(playerTransform){
+            if(playerTransform.transform.position.x > transform.position.x)
+            {
+                rb.velocity = transform.right * speed;
+            }else
+            {   //move left
+                rb.velocity = -transform.right * speed;
 
+            }
         }
 
     }
@@ -90,15 +94,17 @@ public class EnemyScript : MonoBehaviour
 
     }
     public void CheckDistAndTimeToFire() {
-        float dist = Vector2.Distance(playerTransform.transform.position, transform.position);
-        float random = Random.Range(0, 10);
-        if (Time.time > nextFire)
-        {
-            if (dist < random)
+        if(playerTransform){
+            float dist = Vector2.Distance(playerTransform.transform.position, transform.position);
+            float random = Random.Range(0, 10);
+            if (Time.time > nextFire)
             {
-                Debug.Log("dist 10");
-                nextFire = Time.time + fireRate;
-                fireBullet();
+                if (dist < random)
+                {
+                    Debug.Log("dist 10");
+                    nextFire = Time.time + fireRate;
+                    fireBullet();
+                }
             }
         }
     }
@@ -143,22 +149,22 @@ public class EnemyScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MyRedBullet"))
         {
-            TakeDamage(playerAim.bulletDamge); // 有问题
-            TakeDamage(15f);
+            // TakeDamage(playerAim.bulletDamge); // 有问题
+            TakeDamage(20f);
             Debug.Log("hit my red bullet");
             redBulletCollided = true;
         }
         if (collision.gameObject.CompareTag("MyGreenBullet"))
         {
-            TakeDamage(playerAim.bulletDamge);
-            TakeDamage(15f);
+            // TakeDamage(playerAim.bulletDamge);
+            TakeDamage(20f);
             Debug.Log("hit my green bullet");
             greenBulletCollided = true;
         }
         if (collision.gameObject.CompareTag("MyBlueBullet"))
         {
             //TakeDamage(playerAim.bulletDamge);
-            TakeDamage(15f);
+            TakeDamage(20f);
             Debug.Log("hit my blue bullet");
             blueBulletCollided = true;
         }

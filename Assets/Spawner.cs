@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public float spawnRate = 1f;
+    private float spawnRate = 5f;
     public float spawnTime;
     public GameObject minion;
     public Transform leftSpawnPoint;
@@ -14,16 +14,22 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         if(canSpawn)
-        {
-            Instantiate(minion, leftSpawnPoint.position, leftSpawnPoint.rotation);
-            Instantiate(minion, rightSpawnPoint.position, rightSpawnPoint.rotation);
+        {   
+            int num = Random.Range(0,2);
+            if(num == 0){
+                Instantiate(minion, leftSpawnPoint.position, leftSpawnPoint.rotation);
+            }else{
+                Instantiate(minion, rightSpawnPoint.position, rightSpawnPoint.rotation);
+            }
+            
+            
             canSpawn = false;
             StartCoroutine(reset());
         }
        
     }
     IEnumerator reset() {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(spawnRate);
         canSpawn = true;
     }
 }
