@@ -6,10 +6,10 @@ public class Boss2Script : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform player;
-    public float speed = 10;
+    public float speed = 20;
     public float attackSpeed = 100;
     private float waitTime;
-    public float startWaitTime = 1;
+    public float startWaitTime = 0.75f;
 
     private int attackMoveCount = 0; // current attack move count
     private int maxAttackMove = 3;  // attack at most 3 times in a row
@@ -97,7 +97,7 @@ public class Boss2Script : MonoBehaviour
     }
 
     void idleMoving(){
-        Debug.Log("Idling");
+        // Debug.Log("Idling");
         transform.position = Vector2.MoveTowards(transform.position,
            moveSpots[randomMoveSpot].position, speed * Time.deltaTime);
 
@@ -105,7 +105,7 @@ public class Boss2Script : MonoBehaviour
             if(waitTime <= 0){
                 randomMoveSpot = Random.Range(0, moveSpots.Length);
                 waitTime = startWaitTime;
-                Debug.Log("Finished.");
+                // Debug.Log("Finished.");
                 isPatternStarted = false;
             }else{
                 waitTime -= Time.deltaTime;
@@ -114,14 +114,14 @@ public class Boss2Script : MonoBehaviour
     }
 
     void attackMoving(){
-        Debug.Log("Attacking");
+        // Debug.Log("Attacking");
         transform.position = Vector2.MoveTowards(transform.position,
            attackSpots[randomAttackSpot].position, attackSpeed * Time.deltaTime);
         if(Vector2.Distance(transform.position,  attackSpots[randomAttackSpot].position) < 0.2f){
             if(waitTime <= 0){
                 randomAttackSpot = Random.Range(0, attackSpots.Length);
                 waitTime = startWaitTime;
-                Debug.Log("Finished.");
+                // Debug.Log("Finished.");
                 isPatternStarted = false;
                 waves = Random.Range(1, 3);
             }else{
@@ -172,7 +172,7 @@ public class Boss2Script : MonoBehaviour
                 new Vector2(projectileMoveDir.x, projectileMoveDir.y);
 
             angle += angleStep;
-            Destroy(proj, 1f);
+            Destroy(proj, 5f);
         }
     }
 
@@ -180,7 +180,7 @@ public class Boss2Script : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            // Destroy(gameObject);
         }
 
     }
