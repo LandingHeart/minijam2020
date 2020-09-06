@@ -11,11 +11,13 @@ public class Dialog : MonoBehaviour
     private int index;
     public float typingSpeed;
     public GameObject continueButton;
+    private AudioSource source;
     public Animator textDisplayAnim= null;
 
-    // Start is called before the first frame update
     void Start()
     {
+        source = GetComponent<AudioSource>();
+        source.Play();
         StartCoroutine(Type());
     }
     void Update()
@@ -38,7 +40,7 @@ public class Dialog : MonoBehaviour
 
     public void NextSentence()
     {
-        textDisplayAnim.SetTrigger("Change");
+        textDisplayAnim.SetTrigger("openChange");
         continueButton.SetActive(false);
         if (index < sentences.Length - 1)
         {
@@ -49,6 +51,7 @@ public class Dialog : MonoBehaviour
         else
         {
             textDisplay.text = "";
+            source.Stop();
             continueButton.SetActive(false);
         }
     }
