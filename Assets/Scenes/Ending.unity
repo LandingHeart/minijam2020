@@ -644,7 +644,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 205281492}
   sentences:
-  - 'Words show up: Congratulations!!! You beat the final boss!'
   - Countless colors spring up from the monsters with the hit of the last bullet.
   - l can barely open my eyes,  colorful lights flew around and I feel dizzy.
   - ......
