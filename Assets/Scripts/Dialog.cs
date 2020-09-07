@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 
 public class Dialog : MonoBehaviour
 {
@@ -53,6 +53,7 @@ public class Dialog : MonoBehaviour
             textDisplay.text = "";
             source.Stop();
             continueButton.SetActive(false);
+            SceneManager.LoadScene("Main");
         }
     }
 
