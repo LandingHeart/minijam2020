@@ -1215,7 +1215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &382559203
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1791,7 +1791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &832233817
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2043,7 +2043,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &982450097
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2494,7 +2494,7 @@ PrefabInstance:
       objectReference: {fileID: 1357016113}
     - target: {fileID: 6910725938129153190, guid: 69a1ec128a1329441b0f0116ba9d6275, type: 3}
       propertyPath: maxHp
-      value: 1
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6910725938129153190, guid: 69a1ec128a1329441b0f0116ba9d6275, type: 3}
       propertyPath: greenBar
@@ -2727,6 +2727,22 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1563375116}
+    - target: {fileID: 1642641473260683018, guid: a4c281dc1b5204ca18d21032c82d3c28, type: 3}
+      propertyPath: bground
+      value: 
+      objectReference: {fileID: 832233816}
+    - target: {fileID: 1642641473260683018, guid: a4c281dc1b5204ca18d21032c82d3c28, type: 3}
+      propertyPath: falsebground
+      value: 
+      objectReference: {fileID: 396849442}
+    - target: {fileID: 1642641473260683018, guid: a4c281dc1b5204ca18d21032c82d3c28, type: 3}
+      propertyPath: truebground
+      value: 
+      objectReference: {fileID: 832233816}
+    - target: {fileID: 1642641473260683018, guid: a4c281dc1b5204ca18d21032c82d3c28, type: 3}
+      propertyPath: tasktxt
+      value: 
+      objectReference: {fileID: 1880865415}
     - target: {fileID: 1642641473260683019, guid: a4c281dc1b5204ca18d21032c82d3c28, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27
@@ -2898,7 +2914,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Task:\n  Kill the boss 0/1\n"
+  m_Text: "Task:\n  Kill the boss 0/2\n"
 --- !u!222 &1880865418
 CanvasRenderer:
   m_ObjectHideFlags: 0
