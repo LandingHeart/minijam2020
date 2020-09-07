@@ -104,12 +104,11 @@ public class EnemyScript : MonoBehaviour
             float random = Random.Range(0, 10);
             if (Time.time > nextFire)
             {
-                if (dist < random)
-                {
+                
                     // Debug.Log("dist 10");
                     nextFire = Time.time + fireRate;
                     fireBullet();
-                }
+                
             }
         }
     }
