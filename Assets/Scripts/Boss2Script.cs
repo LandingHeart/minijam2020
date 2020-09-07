@@ -130,6 +130,21 @@ public class Boss2Script : MonoBehaviour
         }
     }
 
+    void ultimate(){
+        bool random = true;
+        spawnProjectile(Random.Range(numProjectiles-5, numProjectiles+5), currColor, random);
+        spawnProjectile(Random.Range(numProjectiles-5, numProjectiles+5), currColor, random);
+        spawnProjectile(Random.Range(numProjectiles-5, numProjectiles+5), currColor, random);
+        spawnProjectile(Random.Range(numProjectiles-5, numProjectiles+5), currColor, random);
+        spawnProjectile(Random.Range(numProjectiles-5, numProjectiles+5), currColor, random);
+        spawnProjectile(Random.Range(numProjectiles-5, numProjectiles+5), currColor, random);
+        spawnProjectile(Random.Range(numProjectiles-5, numProjectiles+5), currColor, random);
+        spawnProjectile(Random.Range(numProjectiles-5, numProjectiles+5), currColor, random);
+        spawnProjectile(Random.Range(numProjectiles-5, numProjectiles+5), currColor, random);
+        spawnProjectile(Random.Range(numProjectiles-5, numProjectiles+5), currColor, random);
+        spawnProjectile(Random.Range(numProjectiles-5, numProjectiles+5), currColor, random);
+    }
+
     void attackMoving(){
         // Debug.Log("Attacking");
         transform.position = Vector2.MoveTowards(transform.position,
@@ -141,6 +156,8 @@ public class Boss2Script : MonoBehaviour
                 // Debug.Log("Finished.");
                 isPatternStarted = false;
                 waves = Random.Range(1, 3);
+                if(currHp < 150)
+                    ultimate();
             }else{
                 waitTime -= Time.deltaTime;
                 if(waves > 0 && Time.time > nextFire){

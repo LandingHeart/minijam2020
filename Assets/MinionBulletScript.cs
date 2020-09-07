@@ -23,7 +23,7 @@ public class MinionBulletScript : MonoBehaviour
         {
             // Debug.Log("Hit player " + bulletColor);
             PlayerScript playerScript = collision.gameObject.GetComponent<PlayerScript>();
-            playerScript.TakeDamage(5f, bulletColor);
+            playerScript.TakeDamage(5f, bulletColor, true);
             Destroy(gameObject);
         }
     }

@@ -88,15 +88,19 @@ public class PlayerAim : MonoBehaviour
                 myBullet.tag = "MyRedBullet";
                 Debug.Log("red bullet " + bulletDamage);
                 playerScript.useAColorBullet(red);
+                Rigidbody2D rb = myBullet.GetComponent<Rigidbody2D>();
+                //add force to bullet
+                rb.AddForce(firePoint.up * (speed / 7.0f), ForceMode2D.Impulse);
             }else{
                 myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
                 bulletDamage = default_damage;
                 myBullet.tag = "MyWhiteBullet";
                 Debug.Log("white bullet " + bulletDamage);
+                Rigidbody2D rb = myBullet.GetComponent<Rigidbody2D>();
+                //add force to bullet
+                rb.AddForce(firePoint.up * speed, ForceMode2D.Impulse);
             }
-            Rigidbody2D rb = myBullet.GetComponent<Rigidbody2D>();
-            //add force to bullet
-            rb.AddForce(firePoint.up * (speed / 7.0f), ForceMode2D.Impulse);
+            
         }
         else if (bulletColor.Equals(green) )
         {   

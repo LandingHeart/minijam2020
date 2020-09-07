@@ -18,16 +18,13 @@ public class Spawner : MonoBehaviour
         if(canSpawn)
         {   
             int num = Random.Range(0,2);
-            if(spawnRate < 3f){
+            
+            if(num == 0){
                 Instantiate(minion, leftSpawnPoint.position, leftSpawnPoint.rotation);
-                Instantiate(minion, rightSpawnPoint.position, leftSpawnPoint.rotation);
             }else{
-                if(num == 0){
-                    Instantiate(minion, leftSpawnPoint.position, leftSpawnPoint.rotation);
-                }else{
-                    Instantiate(minion, rightSpawnPoint.position, rightSpawnPoint.rotation);
-                }
+                Instantiate(minion, rightSpawnPoint.position, rightSpawnPoint.rotation);
             }
+            
             
             
             

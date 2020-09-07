@@ -188,7 +188,7 @@ public class EnemyScript : MonoBehaviour
             GameObject player = GameObject.Find("Player");
             if(player){
                 PlayerScript playerScript = player.GetComponent<PlayerScript>();
-                playerScript.Absorb(currColor);
+                playerScript.Absorb(currColor, true);
             }
             
 

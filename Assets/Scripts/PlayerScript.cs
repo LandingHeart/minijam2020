@@ -153,7 +153,27 @@ public class PlayerScript : MonoBehaviour
         Debug.Log("player taking damage " + color + ", current self color " + currColors);
         if(color == currColors){
            // absorb bullet
-           Absorb(color);
+           Absorb(color, false);
+        }else{
+            currHp -= damage;
+            mySprite.SetActive(true);
+            StartCoroutine(resetColor());
+            health.setHealth(currHp);
+        }
+        
+        if (currHp <= 0)
+        {
+            //play animation
+            Debug.Log("player die");
+         
+            Destroy(gameObject);
+        }
+    }
+
+    public void TakeDamage(float damage, myColors color, bool isMinion){
+        if(color == currColors){
+           // absorb bullet
+           Absorb(color, isMinion);
         }else{
             currHp -= damage;
             mySprite.SetActive(true);
@@ -176,14 +196,18 @@ public class PlayerScript : MonoBehaviour
         mySprite.SetActive(false);
     }
 
-    public void Absorb(myColors color){
+    public void Absorb(myColors color, bool isMinion){
+        int green_amount = 1000;
+        if(isMinion){
+            green_amount = 500;
+        }
         switch(color){
             case myColors.RED:
                 red_bullets += 1;
                 redBar.setColorBullets(red_bullets);
                 break;
             case myColors.GREEN:
-                green_bullets += 1000;
+                green_bullets += green_amount;
                 greenBar.setColorBullets(green_bullets);
                 break;
             case myColors.BLUE:
@@ -202,7 +226,7 @@ public class PlayerScript : MonoBehaviour
                 redBar.setColorBullets(red_bullets);
                 break;
             case myColors.GREEN:
-                green_bullets -= 5;
+                green_bullets -= 50;
                 greenBar.setColorBullets(green_bullets);
                 break;
             case myColors.BLUE:
