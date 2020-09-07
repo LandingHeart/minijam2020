@@ -13,7 +13,7 @@ public class EnemyScript : MonoBehaviour
     public GameObject greenBullet;
     public GameObject blueBullet;
     public float bulletSpeed = 10f;
-    private float fireRate = 1f;
+    private float fireRate = 2f;
     private float nextFire;
     private Rigidbody2D rb;
     private bool redBulletCollided = false;
