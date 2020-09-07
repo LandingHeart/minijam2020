@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 1214871383636210215}
   - component: {fileID: 1214871383636210232}
   - component: {fileID: -6071418595391114743}
-  - component: {fileID: 2677680986882622824}
+  - component: {fileID: 2852753890854951196}
+  - component: {fileID: 1493910333449866001}
   m_Layer: 0
   m_Name: BlueBullet
   m_TagString: BlueBullet
@@ -136,7 +137,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2677680986882622824
+--- !u!114 &2852753890854951196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214871383636210235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3752d6ef86c26ed43a98010419d274a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletColor: 2
+--- !u!114 &1493910333449866001
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -85,9 +85,10 @@ GameObject:
   - component: {fileID: 7708850868590496527}
   - component: {fileID: 7708850868590496526}
   - component: {fileID: 3827862798808554387}
-  - component: {fileID: 1998203825723063315}
+  - component: {fileID: 7180012890348092157}
+  - component: {fileID: 4242162275776138712}
   m_Layer: 0
-  m_Name: Red  Bullet
+  m_Name: RedBullet
   m_TagString: RedBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,7 +209,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1998203825723063315
+--- !u!114 &7180012890348092157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7708850868590496627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3752d6ef86c26ed43a98010419d274a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletColor: 0
+--- !u!114 &4242162275776138712
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
