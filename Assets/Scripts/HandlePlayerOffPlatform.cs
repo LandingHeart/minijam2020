@@ -12,31 +12,29 @@ public class HandlePlayerOffPlatform : MonoBehaviour
     float dist = 0;
     void Start()
     {
-        playerScript = player.GetComponent<PlayerScript>();
+        if(player)
+            playerScript = player.GetComponent<PlayerScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(player != null)
-        {
-            dist = player.transform.position.y - platform.transform.position.y;
 
-        }
-        Debug.Log("platform: " + dist);
-        if(dist < 0)
-        {
-            dist = dist * -1;
-        }
-        if(dist > 50f)
-        {
-            if(player != null)
+        if(player){
+            float dist = player.transform.position.y - platform.transform.position.y;
+            Debug.Log("platform: " + dist);
+            if(dist < 0)
+            {
+                dist = dist * -1;
+            }
+            if(dist > 50f)
             {
                 player.transform.position = resetPlayerPosition.position;
                 playerScript.TakeDamage(20f);
+                //Destroy(player);
             }
-          
-            //Destroy(player);
+
         }
+
     }
 }

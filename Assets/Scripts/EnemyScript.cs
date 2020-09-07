@@ -24,7 +24,9 @@ public class EnemyScript : MonoBehaviour
     private Color blue;
     private Color green;
     public float speed;
-    public float force; 
+    public float force;
+
+    public PlayerScript.myColors currColor;
     void Start()
     {
         currHp = maxHp;
@@ -72,18 +74,21 @@ public class EnemyScript : MonoBehaviour
 
     }
     private void GetMyColor() {
-        int random = (int)Random.Range(0, 2);
+        int random = (int)Random.Range(0, 3);
         if (random == 0)
         {
             sr.color = red;
+            currColor = PlayerScript.myColors.RED;
         }
-        if (random == 1)
+        else if (random == 1)
         {
             sr.color = blue;
+            currColor = PlayerScript.myColors.BLUE;
         }
-        if (random == 2)
+        else
         {
             sr.color = green;
+            currColor = PlayerScript.myColors.GREEN;
         }
     }
 
@@ -179,9 +184,17 @@ public class EnemyScript : MonoBehaviour
     private void TakeDamage(float damage) {
         currHp -= damage;
         sr.color = Color.white;
-        if(currHp <= 0f)
-        {
+        if(currHp <= 0f) // die, let player absorb
+        {   
+            GameObject player = GameObject.Find("Player");
+            if(player){
+                PlayerScript playerScript = player.GetComponent<PlayerScript>();
+                playerScript.Absorb(currColor);
+            }
+            
+
             Destroy(gameObject);
+            
         }
     }
   

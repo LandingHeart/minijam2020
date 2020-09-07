@@ -176,7 +176,7 @@ public class PlayerScript : MonoBehaviour
         mySprite.SetActive(false);
     }
 
-    void Absorb(myColors color){
+    public void Absorb(myColors color){
         switch(color){
             case myColors.RED:
                 red_bullets += 1;
