@@ -22,6 +22,7 @@ public class PlayerScript : MonoBehaviour
     public int red_bullets = 0;
     public int green_bullets = 0;
     public int blue_bullets = 0;
+
     void Start()
     {   //enum set curr color to default
         currColors = myColors.DEFAULT;
@@ -164,6 +165,7 @@ public class PlayerScript : MonoBehaviour
         {
             //play animation
             Debug.Log("player die");
+         
             Destroy(gameObject);
         }
     }
