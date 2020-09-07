@@ -1363,6 +1363,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &406100029 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1642641473260683020, guid: a4c281dc1b5204ca18d21032c82d3c28, type: 3}
+  m_PrefabInstance: {fileID: 1751369503}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &468666478
 GameObject:
   m_ObjectHideFlags: 0
@@ -2743,6 +2748,26 @@ PrefabInstance:
       propertyPath: tasktxt
       value: 
       objectReference: {fileID: 1880865415}
+    - target: {fileID: 1642641473260683018, guid: a4c281dc1b5204ca18d21032c82d3c28, type: 3}
+      propertyPath: numProjectiles
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642641473260683018, guid: a4c281dc1b5204ca18d21032c82d3c28, type: 3}
+      propertyPath: boss_red_bullet
+      value: 
+      objectReference: {fileID: 3638221759495544955, guid: 39afcc8cdb3354401b07acc836e87e5e, type: 3}
+    - target: {fileID: 1642641473260683018, guid: a4c281dc1b5204ca18d21032c82d3c28, type: 3}
+      propertyPath: boss_green_bullet
+      value: 
+      objectReference: {fileID: 3638221759495544955, guid: 65098786f42ec7a4cbfbe46c94753044, type: 3}
+    - target: {fileID: 1642641473260683018, guid: a4c281dc1b5204ca18d21032c82d3c28, type: 3}
+      propertyPath: boss_blue_bullet
+      value: 
+      objectReference: {fileID: 3638221759495544955, guid: c55cab9c89440194d851816661345c77, type: 3}
+    - target: {fileID: 1642641473260683018, guid: a4c281dc1b5204ca18d21032c82d3c28, type: 3}
+      propertyPath: launchPoint
+      value: 
+      objectReference: {fileID: 406100029}
     - target: {fileID: 1642641473260683019, guid: a4c281dc1b5204ca18d21032c82d3c28, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27
