@@ -21,6 +21,7 @@ TagManager:
   - background2
   - background3
   - Boss2
+  - bullets
   layers:
   - Default
   - TransparentFX

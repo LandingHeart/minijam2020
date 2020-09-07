@@ -7,8 +7,8 @@ public class PlayerAim : MonoBehaviour
     // Start is called before the first frame update
     //public Transform aimTransform;
  
-    [SerializeField]
-    private GameObject bullet;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject specialRedBullet;
     public float speed = 100f;
     [SerializeField] private Transform firePoint;
     [SerializeField] private Transform firePoint1;
@@ -26,7 +26,7 @@ public class PlayerAim : MonoBehaviour
     private PlayerScript.myColors white;
 
     private float red_damage = 50f;
-    private float green_damage = 0.25f;
+    private float green_damage = 0.5f;
     private float blue_damage = 15f;
     private float default_damage = 10f;
     
@@ -61,6 +61,11 @@ public class PlayerAim : MonoBehaviour
             //fire bullet
             fireProjectile();
         }
+
+        if(Input.GetButton("Fire1") && playerScript.green_bullets > 0 && playerScript.currColors == green){
+            //fire bullet
+            fireProjectile();
+        }
     }
     public void ColorChange() {
         if (playerScript.sr.Equals(Color.red))
@@ -76,7 +81,7 @@ public class PlayerAim : MonoBehaviour
         {
             
             if(playerScript.red_bullets > 0){
-                myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+                myBullet = Instantiate(specialRedBullet, firePoint.position, firePoint.rotation);
                 bulletDamage = red_damage;
                 SpriteRenderer bulletSpriteRenderer = myBullet.GetComponent<SpriteRenderer>();
                 bulletSpriteRenderer.color = playerScript.sr.color;
@@ -89,7 +94,9 @@ public class PlayerAim : MonoBehaviour
                 myBullet.tag = "MyWhiteBullet";
                 Debug.Log("white bullet " + bulletDamage);
             }
-            //set damage;
+            Rigidbody2D rb = myBullet.GetComponent<Rigidbody2D>();
+            //add force to bullet
+            rb.AddForce(firePoint.up * (speed / 7.0f), ForceMode2D.Impulse);
         }
         else if (bulletColor.Equals(green) )
         {   
@@ -107,6 +114,9 @@ public class PlayerAim : MonoBehaviour
                 myBullet.tag = "MyWhiteBullet";
                 Debug.Log("white bullet " + bulletDamage);
             }
+            Rigidbody2D rb = myBullet.GetComponent<Rigidbody2D>();
+            //add force to bullet
+            rb.AddForce(firePoint.up * speed, ForceMode2D.Impulse);
         }
         else if (bulletColor.Equals(blue))
         {
@@ -143,6 +153,9 @@ public class PlayerAim : MonoBehaviour
                 myBullet.tag = "MyWhiteBullet";
                 Debug.Log("white bullet " + bulletDamage);
             }
+            Rigidbody2D rb = myBullet.GetComponent<Rigidbody2D>();
+            //add force to bullet
+            rb.AddForce(firePoint.up * speed, ForceMode2D.Impulse);
         }
         else if (bulletColor.Equals(white))
         {
@@ -150,12 +163,11 @@ public class PlayerAim : MonoBehaviour
             bulletDamage = default_damage;
             myBullet.tag = "MyWhiteBullet";
             Debug.Log("white bullet " + bulletDamage);
-        }
-        if(myBullet){
             Rigidbody2D rb = myBullet.GetComponent<Rigidbody2D>();
             //add force to bullet
             rb.AddForce(firePoint.up * speed, ForceMode2D.Impulse);
         }
+        
         
     }
     private void OnTriggerEnter2D(Collider2D collision)

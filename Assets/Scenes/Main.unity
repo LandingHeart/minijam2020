@@ -2342,7 +2342,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 10000
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -2529,6 +2529,14 @@ PrefabInstance:
       propertyPath: restartButton
       value: 
       objectReference: {fileID: 361442695}
+    - target: {fileID: 6910725938129153190, guid: 69a1ec128a1329441b0f0116ba9d6275, type: 3}
+      propertyPath: red_bullets
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6910725938129153190, guid: 69a1ec128a1329441b0f0116ba9d6275, type: 3}
+      propertyPath: green_bullets
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6910725938129153191, guid: 69a1ec128a1329441b0f0116ba9d6275, type: 3}
       propertyPath: m_Name
       value: Player

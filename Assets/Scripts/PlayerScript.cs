@@ -183,7 +183,7 @@ public class PlayerScript : MonoBehaviour
                 redBar.setColorBullets(red_bullets);
                 break;
             case myColors.GREEN:
-                green_bullets += 1;
+                green_bullets += 1000;
                 greenBar.setColorBullets(green_bullets);
                 break;
             case myColors.BLUE:
@@ -202,7 +202,7 @@ public class PlayerScript : MonoBehaviour
                 redBar.setColorBullets(red_bullets);
                 break;
             case myColors.GREEN:
-                green_bullets -= 1;
+                green_bullets -= 5;
                 greenBar.setColorBullets(green_bullets);
                 break;
             case myColors.BLUE:
