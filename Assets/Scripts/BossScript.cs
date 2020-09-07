@@ -36,12 +36,33 @@ public class BossScript : MonoBehaviour
     [SerializeField] public Transform spawnPoint;
     private bool hasSpawned = false;
 
+    [SerializeField] public GameObject launchPoint;
+    private int waves;
+    private float radius, bulletSpeed;
+    public static bool fire = false;
+    private bool toFire = false;
+    private bool bulletCd = false;
+    [SerializeField] int numProjectiles;
+
+    [SerializeField] GameObject boss_red_bullet;
+    [SerializeField] GameObject boss_blue_bullet;
+    [SerializeField] GameObject boss_green_bullet;
+
+    PlayerScript.myColors currColor = PlayerScript.myColors.RED;
+    private int colorCount = 0;
+    private int maxColorCount = 3;
+
+
     void Start()
     {
         //transform.position = new Vector2(player.position.x, transform.position.y);
         currHp = maxHp;
         sr = GetComponentInChildren<SpriteRenderer>();
         health.SetMaxHealth(currHp);
+
+        radius = 5f;
+        bulletSpeed = 15f;
+        waves = Random.Range(1, 3);
     }
 
     // Update is called once per frame
@@ -69,7 +90,48 @@ public class BossScript : MonoBehaviour
         //transform.position = Vector2.MoveTowards(transform.position,
         //           new Vector2(player.position.x, transform.position.y), speed * Time.deltaTime);
     }
+
     private void Attack() {
+        if(!bulletCd){
+            if(waves > 0 && Time.time > nextFire){
+                nextFire = Time.time + fireRate;
+                bool random = false;
+                if(currHp <= 250){
+                    random = true;
+                }
+                spawnProjectile(Random.Range(numProjectiles-5, numProjectiles+5), currColor,random);
+                StartCoroutine(waitZeroPointFive());
+                waves -= 1;
+            }
+            else if(waves == 0){
+                bulletCd = true;
+                StartCoroutine(BulletCd());
+                waves = Random.Range(1, 3);
+                colorCount += 1;
+            }
+        }
+        
+        if(colorCount == maxColorCount){
+            int colorCode = Random.Range(0, 3); // 0 red, 1 blue, 2 green
+
+            switch(colorCode){
+                case 0:
+                    currColor = PlayerScript.myColors.RED;
+                    break;
+                case 1:
+                    currColor = PlayerScript.myColors.BLUE;
+                    break;
+                case 2:
+                    currColor = PlayerScript.myColors.GREEN;
+                    break;
+                default:
+                    currColor = PlayerScript.myColors.RED;
+                    break;
+            }
+            colorCount = 0;
+        }
+
+
         movementCD -= Time.time;
       
         if (player != null)
@@ -105,10 +167,19 @@ public class BossScript : MonoBehaviour
             StartCoroutine(MyLaserCd());
         }
     }
+    IEnumerator waitZeroPointFive() {
+        yield return new WaitForSeconds(0.5f);
+    }
     IEnumerator MyLaserCd() {
         // yield return new WaitForSeconds(cdTime);
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         laserCd = false;
+    }
+
+    IEnumerator BulletCd() {
+        // yield return new WaitForSeconds(cdTime);
+        yield return new WaitForSeconds(2f);
+        bulletCd = false;
     }
     private void LaserAttack()
     {
@@ -209,4 +280,66 @@ public class BossScript : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         sr.color = new Color(255, 255, 255);
     }
+
+    void spawnProjectile(int num, PlayerScript.myColors color, bool random){
+        
+        float angleStep = 360f / num;
+        float angle = 0f;
+        // choose bullet
+        GameObject bullet;
+        if(random){
+            int colorCode = Random.Range(0, 3); // 0 red, 1 blue, 2 green
+
+            switch(colorCode){
+                case 0:
+                    bullet = boss_red_bullet;
+                    break;
+                case 1:
+                    bullet = boss_blue_bullet;
+                    break;
+                case 2:
+                    bullet = boss_green_bullet;
+                    break;
+                default:
+                    bullet = boss_red_bullet;
+                    break;
+            }
+        }else{
+            switch(color){
+                case PlayerScript.myColors.RED:
+                    bullet = boss_red_bullet;
+                    break;
+                case PlayerScript.myColors.BLUE:
+                    bullet = boss_blue_bullet;
+                    break;
+                case PlayerScript.myColors.GREEN:
+                    bullet = boss_green_bullet;
+                    break;
+                default:
+                    bullet = boss_red_bullet;
+                    break;
+            }
+        }
+
+        for (int i = 0; i <= num - 1; i++)
+        {
+            float dirXpos = transform.position.x + Mathf.Sin((angle * Mathf.PI) / 180) * radius;
+
+            float dirYpos = transform.position.y + Mathf.Cos((angle * Mathf.PI) / 180) * radius;
+
+            Vector3 projectileVector = new Vector3(dirXpos, dirYpos, 0);
+            Vector3 projectileMoveDir = (projectileVector - launchPoint.transform.position).normalized * bulletSpeed;
+
+            var proj = Instantiate(bullet, launchPoint.transform.position, Quaternion.identity);
+            proj.GetComponent<Rigidbody2D>().velocity =
+                new Vector2(projectileMoveDir.x, projectileMoveDir.y);
+
+            angle += angleStep;
+            Destroy(proj, 5f);
+        }
+    
+    }
+
+
+        
 }

@@ -47,9 +47,13 @@ public class Boss2Script : MonoBehaviour
     private float fireRate = 0.3f;
     private float nextFire;
 
-    public GameObject launchPoint;
+    [SerializeField] public GameObject launchPoint;
     [SerializeField] public Transform spawnPoint;
     private bool hasSpawned = false;
+
+    PlayerScript.myColors currColor = PlayerScript.myColors.RED;
+    private int colorCount = 0;
+    private int maxColorCount = 3;
 
     void Start()
     {
@@ -141,34 +145,55 @@ public class Boss2Script : MonoBehaviour
                 waitTime -= Time.deltaTime;
                 if(waves > 0 && Time.time > nextFire){
                     nextFire = Time.time + fireRate;
-                    spawnProjectile(Random.Range(numProjectiles-5, numProjectiles+5));
+                    bool random = false;
+                    if(currHp <= 250){
+                        random = true;
+                    }
+                    spawnProjectile(Random.Range(numProjectiles-5, numProjectiles+5), currColor,random);
                     waves -= 1;
                 }
             }
         }
     }
 
-    void spawnProjectile(int num)
-    {
+    void spawnProjectile(int num, PlayerScript.myColors color, bool random){
+        
         float angleStep = 360f / num;
         float angle = 0f;
         // choose bullet
         GameObject bullet;
-        int color = Random.Range(0, 3); // 0 red, 1 blue, 2 green
-        switch(color){
-            case 0:
-                bullet = boss2_red_bullet;
-                break;
-            case 1:
-                bullet = boss2_blue_bullet;
-                break;
-            case 2:
-                bullet = boss2_green_bullet;
-                break;
-            default:
-                bullet = boss2_red_bullet;
-                break;
+        if(random){
+            int colorCode = Random.Range(0, 3); // 0 red, 1 blue, 2 green
 
+            switch(colorCode){
+                case 0:
+                    bullet = boss2_red_bullet;
+                    break;
+                case 1:
+                    bullet = boss2_blue_bullet;
+                    break;
+                case 2:
+                    bullet = boss2_green_bullet;
+                    break;
+                default:
+                    bullet = boss2_red_bullet;
+                    break;
+            }
+        }else{
+            switch(color){
+                case PlayerScript.myColors.RED:
+                    bullet = boss2_red_bullet;
+                    break;
+                case PlayerScript.myColors.BLUE:
+                    bullet = boss2_blue_bullet;
+                    break;
+                case PlayerScript.myColors.GREEN:
+                    bullet = boss2_green_bullet;
+                    break;
+                default:
+                    bullet = boss2_red_bullet;
+                    break;
+            }
         }
 
         for (int i = 0; i <= num - 1; i++)
@@ -187,33 +212,44 @@ public class Boss2Script : MonoBehaviour
             angle += angleStep;
             Destroy(proj, 5f);
         }
+    
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("MyRedBullet"))
-        {
+        // if (collision.gameObject.CompareTag("MyRedBullet"))
+        // {
             
-            TakeDamage(10f);
-            Debug.Log("take damge red");
-        }
-        if (collision.gameObject.CompareTag("MyBlueBullet"))
-        {
+        //     TakeDamage(10f);
+        //     Debug.Log("take damge red");
+        // }
+        // if (collision.gameObject.CompareTag("MyBlueBullet"))
+        // {
           
-            TakeDamage(10f);
-            Debug.Log("take damge blue");
-        }
-        if (collision.gameObject.CompareTag("MyGreenBullet"))
-        {
-            TakeDamage(10f);
+        //     TakeDamage(10f);
+        //     Debug.Log("take damge blue");
+        // }
+        // if (collision.gameObject.CompareTag("MyGreenBullet"))
+        // {
+        //     TakeDamage(10f);
            
-            Debug.Log("take damge g");
-        }
-        if (collision.gameObject.CompareTag("MyWhiteBullet"))
-        {
+        //     Debug.Log("take damge g");
+        // }
+        // if (collision.gameObject.CompareTag("MyWhiteBullet"))
+        // {
            
-            TakeDamage(10f);
-            Debug.Log("take damge w");
+        //     TakeDamage(10f);
+        //     Debug.Log("take damge w");
+        // }
+
+        if (collision.gameObject.CompareTag("MyRedBullet") || collision.gameObject.CompareTag("MyBlueBullet") || collision.gameObject.CompareTag("MyGreenBullet") || collision.gameObject.CompareTag("MyWhiteBullet"))
+        {   
+            GameObject playerObj =  GameObject.Find("Player");
+            if(playerObj){
+                PlayerAim playerAim = playerObj.GetComponent<PlayerAim>();
+                TakeDamage(playerAim.bulletDamage);
+            }
+
         }
 
     }
