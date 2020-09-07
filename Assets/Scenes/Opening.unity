@@ -524,12 +524,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 490756315}
   sentences:
-  - 'At a stromy night, l paint in my room as usual. Suddenly, l hear loud thunder
-    : a flash come.'
-  - The room turn to dark, what l can only hear is blowing from windows. Afew moments
-    later, electricity restored.
-  - l found that all the world turns to black and white only, except pigments and
-    brushes l have ......
+  - At a stormy night, l paint in my room as usual. Suddenly, l hear loud thunder
+    , a sudden flash.
+  - Dakrness fallen, l can only hear is loud piercing sound comming from the windows.
+    Afeww moments later``````` electricity restored.
+  - And the world turn Black And White, except pigments and brushes l carry ......
+  - The color of the world is stolen from us.....
   typingSpeed: 0.03
   continueButton: {fileID: 1223649022}
   textDisplayAnim: {fileID: 490756317}
