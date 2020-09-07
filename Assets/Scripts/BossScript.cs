@@ -28,7 +28,9 @@ public class BossScript : MonoBehaviour
     float dist = 0;
 
     public float cdTime = 1f;
-    public GameObject bground;
+    public GameObject falsebground;
+    public GameObject truebground;
+    public GameObject tasktxt;
     public HealthBar health;
 
     [SerializeField] public Transform spawnPoint;
@@ -198,8 +200,9 @@ public class BossScript : MonoBehaviour
         if(currHp <= 0)
         {   
             Destroy(gameObject, 0.1f);
-            //bground = GameObject.FindWithTag("background0");
-            //bground.SetActive(false);
+            truebground.SetActive(true);
+            falsebground.SetActive(false);
+            tasktxt.GetComponent<UnityEngine.UI.Text>().text = "Task:\n  Kill the boss 1/2";
         }
     }
     IEnumerator resetColor() {

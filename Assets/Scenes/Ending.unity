@@ -645,13 +645,13 @@ MonoBehaviour:
   textDisplay: {fileID: 205281492}
   sentences:
   - 'Words show up: Congratulations!!! You beat the final boss!'
-  - Countless colors spring up from the monster with hit of the last bullet.
-  - l can barely open my eyes in colorful lights and feel dizzy.
+  - Countless colors spring up from the monsters with the hit of the last bullet.
+  - l can barely open my eyes,  colorful lights flew around and I feel dizzy.
   - ......
-  - When l wake up, l found my own pigments and brushes besides me.
-  - 'l look outside:  the rain is already stopped.'
+  - When l woke up, l found my own pigments and brushes besides me.
+  - 'l look outside:  the rain had stopped.'
   - 'l open the window: birds are singing.'
-  - Is all of this a dream......?
+  - Is all of a dream......?
   typingSpeed: 0.06
   continueButton: {fileID: 404212195}
 --- !u!4 &1218233372
