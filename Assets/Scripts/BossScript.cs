@@ -154,29 +154,39 @@ public class BossScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Debug.Log("Getting Hit");
-        if (collision.gameObject.CompareTag("MyRedBullet"))
-        {
+        // if (collision.gameObject.CompareTag("MyRedBullet"))
+        // {
             
-            TakeDamage(10f);
-            Debug.Log("take damge red");
-        }
-        if (collision.gameObject.CompareTag("MyBlueBullet"))
-        {
+        //     TakeDamage(10f);
+        //     Debug.Log("take damge red");
+        // }
+        // if (collision.gameObject.CompareTag("MyBlueBullet"))
+        // {
           
-            TakeDamage(10f);
-            Debug.Log("take damge blue");
-        }
-        if (collision.gameObject.CompareTag("MyGreenBullet"))
-        {
-            TakeDamage(10f);
+        //     TakeDamage(10f);
+        //     Debug.Log("take damge blue");
+        // }
+        // if (collision.gameObject.CompareTag("MyGreenBullet"))
+        // {
+        //     TakeDamage(10f);
            
-            Debug.Log("take damge g");
-        }
-        if (collision.gameObject.CompareTag("MyWhiteBullet"))
-        {
+        //     Debug.Log("take damge g");
+        // }
+        // if (collision.gameObject.CompareTag("MyWhiteBullet"))
+        // {
            
-            TakeDamage(10f);
-            Debug.Log("take damge w");
+        //     TakeDamage(10f);
+        //     Debug.Log("take damge w");
+        // }
+
+        if (collision.gameObject.CompareTag("MyRedBullet") || collision.gameObject.CompareTag("MyBlueBullet") || collision.gameObject.CompareTag("MyGreenBullet") || collision.gameObject.CompareTag("MyWhiteBullet"))
+        {   
+            GameObject playerObj =  GameObject.Find("Player");
+            if(playerObj){
+                PlayerAim playerAim = playerObj.GetComponent<PlayerAim>();
+                TakeDamage(playerAim.bulletDamage);
+            }
+
         }
     }
     public void TakeDamage(float damage) {

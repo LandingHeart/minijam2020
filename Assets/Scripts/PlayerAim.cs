@@ -19,11 +19,16 @@ public class PlayerAim : MonoBehaviour
         
     private int BulletCount;
     PlayerScript.myColors bulletColor;
-    public float bulletDamge = 10f;
+    public float bulletDamage = 10f;
     private PlayerScript.myColors red;
     private PlayerScript.myColors blue;
     private PlayerScript.myColors green;
     private PlayerScript.myColors white;
+
+    private float red_damage = 50f;
+    private float green_damage = 0.25f;
+    private float blue_damage = 15f;
+    private float default_damage = 10f;
     
     void Start()
     {
@@ -69,59 +74,82 @@ public class PlayerAim : MonoBehaviour
         GameObject myBullet = null;
         if (bulletColor.Equals(red))
         {
-            Debug.Log("red bullet " + bulletDamge);
             
-
-            myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
-            SpriteRenderer bulletSpriteRenderer = myBullet.GetComponent<SpriteRenderer>();
-            bulletSpriteRenderer.color = playerScript.sr.color;
-            myBullet.tag = "MyRedBullet";
+            if(playerScript.red_bullets > 0){
+                myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+                bulletDamage = red_damage;
+                SpriteRenderer bulletSpriteRenderer = myBullet.GetComponent<SpriteRenderer>();
+                bulletSpriteRenderer.color = playerScript.sr.color;
+                myBullet.tag = "MyRedBullet";
+                Debug.Log("red bullet " + bulletDamage);
+                playerScript.useAColorBullet(red);
+            }else{
+                myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+                bulletDamage = default_damage;
+                myBullet.tag = "MyWhiteBullet";
+                Debug.Log("white bullet " + bulletDamage);
+            }
             //set damage;
         }
         else if (bulletColor.Equals(green) )
-        {
-            bulletDamge = 12;
-            Debug.Log("green bullet" + bulletDamge);
-
-            myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
-            SpriteRenderer bulletSpriteRenderer = myBullet.GetComponent<SpriteRenderer>();
-            bulletSpriteRenderer.color = playerScript.sr.color;
-            myBullet.tag = "MyGreenBullet";
+        {   
+            if(playerScript.green_bullets > 0){
+                myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+                bulletDamage = green_damage;
+                SpriteRenderer bulletSpriteRenderer = myBullet.GetComponent<SpriteRenderer>();
+                bulletSpriteRenderer.color = playerScript.sr.color;
+                myBullet.tag = "MyGreenBullet";
+                Debug.Log("green bullet" + bulletDamage);
+                playerScript.useAColorBullet(green);
+            }else{
+                myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+                bulletDamage = default_damage;
+                myBullet.tag = "MyWhiteBullet";
+                Debug.Log("white bullet " + bulletDamage);
+            }
         }
         else if (bulletColor.Equals(blue))
         {
-            bulletDamge = 15;
-            Debug.Log("blue bullet" + bulletDamge);
-            myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
-            GameObject myBullet1 = Instantiate(bullet, firePoint1.position, firePoint1.rotation);
-            GameObject myBullet2 = Instantiate(bullet, firePoint2.position, firePoint2.rotation);
+            if(playerScript.blue_bullets > 0){
+                Debug.Log("blue bullet" + bulletDamage);
+                myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+                bulletDamage = blue_damage;
+                GameObject myBullet1 = Instantiate(bullet, firePoint1.position, firePoint1.rotation);
+                GameObject myBullet2 = Instantiate(bullet, firePoint2.position, firePoint2.rotation);
 
-            SpriteRenderer bulletSpriteRenderer = myBullet.GetComponent<SpriteRenderer>();
-            bulletSpriteRenderer.color = playerScript.sr.color;
-            myBullet.tag = "MyBlueBullet";
+                SpriteRenderer bulletSpriteRenderer = myBullet.GetComponent<SpriteRenderer>();
+                bulletSpriteRenderer.color = playerScript.sr.color;
+                myBullet.tag = "MyBlueBullet";
 
-            SpriteRenderer bulletSpriteRenderer1 = myBullet1.GetComponent<SpriteRenderer>();
-            bulletSpriteRenderer1.color = playerScript.sr.color;
-            myBullet1.tag = "MyBlueBullet";
+                SpriteRenderer bulletSpriteRenderer1 = myBullet1.GetComponent<SpriteRenderer>();
+                bulletSpriteRenderer1.color = playerScript.sr.color;
+                myBullet1.tag = "MyBlueBullet";
 
-            SpriteRenderer bulletSpriteRenderer2 = myBullet2.GetComponent<SpriteRenderer>();
-            bulletSpriteRenderer2.color = playerScript.sr.color;
-            myBullet2.tag = "MyBlueBullet";
+                SpriteRenderer bulletSpriteRenderer2 = myBullet2.GetComponent<SpriteRenderer>();
+                bulletSpriteRenderer2.color = playerScript.sr.color;
+                myBullet2.tag = "MyBlueBullet";
 
-            Rigidbody2D rb1 = myBullet1.GetComponent<Rigidbody2D>();
-            //add force to bullet
-            rb1.AddForce(firePoint1.up * speed, ForceMode2D.Impulse);
+                Rigidbody2D rb1 = myBullet1.GetComponent<Rigidbody2D>();
+                //add force to bullet
+                rb1.AddForce(firePoint1.up * speed, ForceMode2D.Impulse);
 
-            Rigidbody2D rb2 = myBullet2.GetComponent<Rigidbody2D>();
-            //add force to bullet
-            rb2.AddForce(firePoint2.up * speed, ForceMode2D.Impulse);
+                Rigidbody2D rb2 = myBullet2.GetComponent<Rigidbody2D>();
+                //add force to bullet
+                rb2.AddForce(firePoint2.up * speed, ForceMode2D.Impulse);
+                playerScript.useAColorBullet(blue);
+            }else{
+                myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+                bulletDamage = default_damage;
+                myBullet.tag = "MyWhiteBullet";
+                Debug.Log("white bullet " + bulletDamage);
+            }
         }
         else if (bulletColor.Equals(white))
         {
             myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
-            bulletDamge = 5f;
+            bulletDamage = default_damage;
             myBullet.tag = "MyWhiteBullet";
-            Debug.Log("white bullet " + bulletDamge);
+            Debug.Log("white bullet " + bulletDamage);
         }
         if(myBullet){
             Rigidbody2D rb = myBullet.GetComponent<Rigidbody2D>();

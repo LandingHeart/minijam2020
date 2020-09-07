@@ -22,7 +22,7 @@ public class HandlePlayerOffPlatform : MonoBehaviour
 
         if(player){
             float dist = player.transform.position.y - platform.transform.position.y;
-            Debug.Log("platform: " + dist);
+            // Debug.Log("platform: " + dist);
             if(dist < 0)
             {
                 dist = dist * -1;

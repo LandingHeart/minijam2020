@@ -2494,7 +2494,7 @@ PrefabInstance:
       objectReference: {fileID: 1357016113}
     - target: {fileID: 6910725938129153190, guid: 69a1ec128a1329441b0f0116ba9d6275, type: 3}
       propertyPath: maxHp
-      value: 1
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6910725938129153190, guid: 69a1ec128a1329441b0f0116ba9d6275, type: 3}
       propertyPath: greenBar

@@ -65,62 +65,62 @@ public class PlayerScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            sr.color = Color.blue;
-            currColors = myColors.BLUE;
+            sr.color = Color.green;
+            currColors = myColors.GREEN;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            sr.color = Color.green;
-            currColors = myColors.GREEN;
+            sr.color = Color.blue;
+            currColors = myColors.BLUE;
         }
 
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //check collision by comparing the tags of object 
-        if (collision.gameObject.CompareTag("RedBullet"))
-        {
-          if(currColors.Equals(myColors.BLUE))
-            {
-                TakeDamage(10f);
-                Debug.Log(currColors + " color, and take red bullet damge: " + 10f);
+        // //check collision by comparing the tags of object 
+        // if (collision.gameObject.CompareTag("RedBullet"))
+        // {
+        //   if(currColors.Equals(myColors.BLUE))
+        //     {
+        //         TakeDamage(10f);
+        //         Debug.Log(currColors + " color, and take red bullet damge: " + 10f);
 
-            }
-          if(currColors.Equals(myColors.GREEN))
-            {
-                TakeDamage(10f);
-                Debug.Log(currColors + " color, and take green bullet damge: " + 10f);
-            }
-        }
-        if (collision.gameObject.CompareTag("GreenBullet"))
-        {
-            if (currColors.Equals(myColors.BLUE))
-            {
-                TakeDamage(10f);
-                Debug.Log(currColors + " color, and take green bullet damge: " + 10f);
-            }
-            if (currColors.Equals(myColors.RED))
-            {
-                TakeDamage(10f);
-                Debug.Log(currColors + " color, and take green bullet damge: " + 10f);
-            }
-        }
-        if (collision.gameObject.CompareTag("BlueBullet"))
-        {
-            if (currColors.Equals(myColors.RED))
-            {
-                TakeDamage(10f);
-                Debug.Log(currColors + " color, and take blue bullet damge: " + 10f);
+        //     }
+        //   if(currColors.Equals(myColors.GREEN))
+        //     {
+        //         TakeDamage(10f);
+        //         Debug.Log(currColors + " color, and take green bullet damge: " + 10f);
+        //     }
+        // }
+        // if (collision.gameObject.CompareTag("GreenBullet"))
+        // {
+        //     if (currColors.Equals(myColors.BLUE))
+        //     {
+        //         TakeDamage(10f);
+        //         Debug.Log(currColors + " color, and take green bullet damge: " + 10f);
+        //     }
+        //     if (currColors.Equals(myColors.RED))
+        //     {
+        //         TakeDamage(10f);
+        //         Debug.Log(currColors + " color, and take green bullet damge: " + 10f);
+        //     }
+        // }
+        // if (collision.gameObject.CompareTag("BlueBullet"))
+        // {
+        //     if (currColors.Equals(myColors.RED))
+        //     {
+        //         TakeDamage(10f);
+        //         Debug.Log(currColors + " color, and take blue bullet damge: " + 10f);
 
-            }
-            if (currColors.Equals(myColors.GREEN))
-            {
-                TakeDamage(10f);
-                Debug.Log(currColors + " color, and take blue bullet damge: " + 10f);
-            }
-        }
+        //     }
+        //     if (currColors.Equals(myColors.GREEN))
+        //     {
+        //         TakeDamage(10f);
+        //         Debug.Log(currColors + " color, and take blue bullet damge: " + 10f);
+        //     }
+        // }
 
         if (collision.gameObject.CompareTag("Laser"))
         {
@@ -195,4 +195,22 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    public void useAColorBullet(myColors color){
+        switch(color){
+            case myColors.RED:
+                red_bullets -= 1;
+                redBar.setColorBullets(red_bullets);
+                break;
+            case myColors.GREEN:
+                green_bullets -= 1;
+                greenBar.setColorBullets(green_bullets);
+                break;
+            case myColors.BLUE:
+                blue_bullets -= 1;
+                blueBar.setColorBullets(blue_bullets);
+                break;
+            default:
+                break;
+        }
+    }
 }
